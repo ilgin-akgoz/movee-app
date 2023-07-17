@@ -35,9 +35,9 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
-		<string>Color</string>
+		<string>vibrantBlue</string>
 		<key>UIImageName</key>
-		<string></string>
+		<string>splash_icon</string>
 	</dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

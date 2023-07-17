@@ -28,7 +28,7 @@ struct MoveeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            SplashView()
                 .onChange(of: phase, perform: manageChanges(for:))
                 .onOpenURL(perform: onOpenURL(_:))
         }
@@ -36,18 +36,18 @@ struct MoveeApp: App {
 
     private func manageChanges(for phase: ScenePhase) {
         switch phase {
-            case .active:
-                // App became active
-                activated()
-            case .background:
-                // App is running in the background
-                backgrounded()
-            case .inactive:
-                // App became inactive
-                deactivated()
-            @unknown default:
-                // Fallback for future cases
-                break
+        case .active:
+            // App became active
+            activated()
+        case .background:
+            // App is running in the background
+            backgrounded()
+        case .inactive:
+            // App became inactive
+            deactivated()
+        @unknown default:
+            // Fallback for future cases
+        break
         }
     }
 }

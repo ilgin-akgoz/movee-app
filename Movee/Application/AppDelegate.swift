@@ -10,7 +10,8 @@ import UIKit
 
 // This will include methods which the new SwiftUI Lifecycle does not support yet.
  class AppDelegate: NSObject, UIApplicationDelegate {
-     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+     func application(_ application: UIApplication,
+                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
          // Handle remote notifications here
      }
 

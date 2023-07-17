@@ -36,7 +36,8 @@ extension Experimental {
         let originalImpCallable = unsafeBitCast(originalImp, to: IMPType.self)
 
         let block: @convention(block) (AnyObject, AnyObject) -> Void = {
-            if let this = $0 as? NSObject, let task = this.value(forKey: "task") as? URLSessionDataTask, let data = $1 as? Data {
+            if let this = $0 as? NSObject, let task = this.value(forKey: "task") as? URLSessionDataTask,
+                let data = $1 as? Data {
                 Experimental.networkLogger.logDataTask(task, didReceive: data)
             }
             originalImpCallable($0, selector, $1)

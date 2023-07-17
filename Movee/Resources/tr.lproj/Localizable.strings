@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Movee
+
+  Created by Akgoz, Ilgin on 17.07.2023.
+  Copyright © 2023 Adesso Turkey. All rights reserved.
+*/
+
+"password" = "Şifre";
+"forgot_password" = "Şifremi Unuttum"
+"login" = "Giriş Yap"
+"register" = "Hesabınız yok mu? Şimdi Kaydolun"

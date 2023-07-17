@@ -7,6 +7,6 @@
 */
 
 "password" = "Şifre";
-"forgot_password" = "Şifremi Unuttum"
-"login" = "Giriş Yap"
-"register" = "Hesabınız yok mu? Şimdi Kaydolun"
+"forgot_password" = "Şifremi Unuttum";
+"login" = "Giriş Yap";
+"register" = "Hesabınız yok mu? Şimdi Kaydolun";

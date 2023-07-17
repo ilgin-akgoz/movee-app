@@ -7,6 +7,6 @@
 */
 
 "password" = "Password";
-"forgot_password" = "Forgot Password?"
-"login" = "Login"
-"register" = "Don't have an account? Register Now"
+"forgot_password" = "Forgot Password?";
+"login" = "Login";
+"register" = "Don't have an account? Register Now";

@@ -18,18 +18,18 @@ enum AdessoError: Error, Equatable {
 
     var errorCode: Int {
         switch self {
-            case .httpError(let error, _):
-                return error.rawValue
-            case .unknown(let error):
-                return error.code
-            case .customError(let code, _, _):
-                return code
-            case .mappingFailed:
-                return 0
-            case .badResponse:
-                return 0
-            case .badURL:
-                return 0
+        case .httpError(let error, _):
+            return error.rawValue
+        case .unknown(let error):
+            return error.code
+        case .customError(let code, _, _):
+            return code
+        case .mappingFailed:
+            return 0
+        case .badResponse:
+            return 0
+        case .badURL:
+            return 0
         }
     }
 
@@ -41,14 +41,14 @@ enum AdessoError: Error, Equatable {
 extension AdessoError {
     private func getResponse() -> ErrorResponse? {
         switch self {
-            case .httpError(_, let data), .customError(_, _, let data):
-                if let data = data {
-                    let response = try? JSONDecoder().decode(ErrorResponse.self, from: data)
-                    return response
-                }
-                return nil
-            case .badResponse, .mappingFailed, .unknown, .badURL:
-                return nil
+        case .httpError(_, let data), .customError(_, _, let data):
+            if let data = data {
+                let response = try? JSONDecoder().decode(ErrorResponse.self, from: data)
+                return response
+            }
+            return nil
+        case .badResponse, .mappingFailed, .unknown, .badURL:
+            return nil
         }
     }
 }

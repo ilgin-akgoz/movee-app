@@ -26,9 +26,12 @@ class LoggerManager {
 
     func setup(level: LogLevel = .debug, directoryPath: String? = nil) {
         let ddosLogger = DDOSLogger.sharedInstance
-        guard let documentsDirectory = directoryPath ?? NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
-                                                                                            FileManager.SearchPathDomainMask.userDomainMask,
-                                                                                            true).first else { return }
+        guard let documentsDirectory = directoryPath ??
+            NSSearchPathForDirectoriesInDomains(
+            FileManager.SearchPathDirectory.documentDirectory,
+            FileManager.SearchPathDomainMask.userDomainMask,
+            true
+            ).first else { return }
 
         logger.setLogLevel(level)
         DDLog.add(ddosLogger)
@@ -58,7 +61,11 @@ class LoggerManager {
     }
 
     func setInfo(version: String, build: String, deviceModel: String, osVersion: String) {
-        logger.info("Application started. Version: \(version), Build: \(build), Device: \(deviceModel), iOS: \(osVersion)")
+        logger.info("Application started." +
+                    "Version: \(version), " +
+                    "Build: \(build), " +
+                    "Device: \(deviceModel)," +
+                    "iOS: \(osVersion)")
     }
 
     func setError(errorMessage: String) {

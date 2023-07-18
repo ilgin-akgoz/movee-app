@@ -58,7 +58,12 @@ class LoggerManager {
     }
 
     func setInfo(version: String, build: String, deviceModel: String, osVersion: String) {
-        logger.info("Application started. Version: \(version), Build: \(build), Device: \(deviceModel), iOS: \(osVersion)")
+        let infoString = "Application started. " +
+                        "Version: \(version), " +
+                        "Build: \(build), " +
+                        "Device: \(deviceModel), " +
+                        "iOS: \(osVersion)"
+        logger.info(infoString)
     }
 
     func setError(errorMessage: String) {

@@ -81,7 +81,9 @@ extension Experimental {
                 Experimental.networkLogger.logTask(task, didFinishCollecting: metrics)
             }
 
-            if let this = $0 as? NSObject, let task = this.value(forKey: "task") as? URLSessionTask, let error = $1 as? (Error?) {
+            if let this = $0 as? NSObject,
+                let task = this.value(forKey: "task") as? URLSessionTask,
+                let error = $1 as? (Error?) {
                 Experimental.networkLogger.logTask(task, didCompleteWithError: error)
             }
 

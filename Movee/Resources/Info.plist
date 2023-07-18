@@ -35,10 +35,12 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
-		<string>vibrantBlue</string>
+		<string></string>
 		<key>UIImageName</key>
-		<string>splash_icon</string>
+		<string></string>
 	</dict>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen.storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

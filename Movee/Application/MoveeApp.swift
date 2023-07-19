@@ -47,7 +47,7 @@ struct MoveeApp: App {
             deactivated()
         @unknown default:
             // Fallback for future cases
-        break
+            break
         }
     }
 }

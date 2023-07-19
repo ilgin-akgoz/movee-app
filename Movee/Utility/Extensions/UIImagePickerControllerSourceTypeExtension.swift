@@ -18,13 +18,13 @@ extension UIImagePickerController.SourceType: CaseIterable {
     func text() -> String {
         switch self {
         case .camera:
-                return "source_camera"
+            return "source_camera"
         case .savedPhotosAlbum:
-                return "source_saved_album"
+            return "source_saved_album"
         case .photoLibrary:
-                return "source_library"
+            return "source_library"
         default: // Since the available type will be now filtered, this will not trigger.
-                return ""
+            return ""
         }
     }
 }

@@ -21,8 +21,7 @@ extension String {
                           tableName: tableName,
                           bundle: bundle,
                           value: value,
-                          comment: comment)
-        // swiftlint:disable:this nslocalizedstring_key
+                          comment: comment) // swiftlint:disable:this nslocalizedstring_key
     }
 
     func localized(withDefaultValue value: String,

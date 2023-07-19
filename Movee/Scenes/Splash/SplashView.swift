@@ -17,19 +17,19 @@ struct SplashView: View {
             } else {
                 Image("splash_background")
                     .resizable()
-                    .ignoresSafeArea()
+                Image("splash_icon")
                 VStack {
-                    Spacer()
-                    Image("splash_icon")
                     Spacer()
                     Text("We 🤍 movie")
                         .font(.textStyle2)
                         .foregroundColor(Color("white"))
+                        .padding(.bottom, 36)
                 }
             }
         }
+        .ignoresSafeArea()
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 withAnimation {
                     self.isActive = true
                 }

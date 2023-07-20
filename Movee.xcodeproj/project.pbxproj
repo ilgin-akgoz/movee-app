@@ -35,11 +35,13 @@
 		686F40D32A66A4300083FC1F /* NetworkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686F40D22A66A4300083FC1F /* NetworkLoader.swift */; };
 		686F40D52A66A4650083FC1F /* NetworkLoaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686F40D42A66A4650083FC1F /* NetworkLoaderProtocol.swift */; };
 		686F40D72A66BDF10083FC1F /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686F40D62A66BDF10083FC1F /* URLSessionProtocol.swift */; };
+		68959A222A6930F800436FFA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68959A212A6930F800436FFA /* LoginViewModel.swift */; };
 		68AA0B222A68271600B19358 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AA0B212A68271600B19358 /* ColorExtension.swift */; };
 		68BD7F282A654BD300D043D2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68BD7F2A2A654BD300D043D2 /* Localizable.strings */; };
 		68BD7F302A65647800D043D2 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD7F2F2A65647800D043D2 /* FontExtension.swift */; };
 		68BD7F352A65674700D043D2 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD7F342A65674700D043D2 /* SplashView.swift */; };
 		68BD7F382A65679500D043D2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD7F372A65679500D043D2 /* LoginView.swift */; };
+		68DEE2F32A69350E0048447F /* PasswordFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DEE2F22A69350E0048447F /* PasswordFieldView.swift */; };
 		720A19F829E6BCF600265401 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A19F729E6BCF600265401 /* ArrayExtensions.swift */; };
 		7259FCBB299EAD3300BF8309 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56AE8B256E44F00007D0A2 /* UIViewControllerExtensions.swift */; };
 		7259FCBC299EAD3300BF8309 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56AE85256E44730007D0A2 /* UICollectionViewExtensions.swift */; };
@@ -135,12 +137,14 @@
 		686F40D22A66A4300083FC1F /* NetworkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoader.swift; sourceTree = "<group>"; };
 		686F40D42A66A4650083FC1F /* NetworkLoaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoaderProtocol.swift; sourceTree = "<group>"; };
 		686F40D62A66BDF10083FC1F /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		68959A212A6930F800436FFA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		68AA0B212A68271600B19358 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		68BD7F292A654BD300D043D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		68BD7F2B2A654BD800D043D2 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		68BD7F2F2A65647800D043D2 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		68BD7F342A65674700D043D2 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		68BD7F372A65679500D043D2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		68DEE2F22A69350E0048447F /* PasswordFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFieldView.swift; sourceTree = "<group>"; };
 		720A19F729E6BCF600265401 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		7259FCE4299EAD3300BF8309 /* Movee-Pulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movee-Pulse.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		727273802A1CBAB60050D236 /* MapApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapApplication.swift; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 			isa = PBXGroup;
 			children = (
 				68BD7F372A65679500D043D2 /* LoginView.swift */,
+				68959A212A6930F800436FFA /* LoginViewModel.swift */,
+				68DEE2F22A69350E0048447F /* PasswordFieldView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -667,8 +673,10 @@
 				727273812A1CBAB60050D236 /* MapApplication.swift in Sources */,
 				72A7BE1C2A1CA5E000D66097 /* URLExtensions.swift in Sources */,
 				2F56AE8E256E487F0007D0A2 /* StringExtensions.swift in Sources */,
+				68DEE2F32A69350E0048447F /* PasswordFieldView.swift in Sources */,
 				2F56AE8A256E44BB0007D0A2 /* UICollectionViewCellExtensions.swift in Sources */,
 				68AA0B222A68271600B19358 /* ColorExtension.swift in Sources */,
+				68959A222A6930F800436FFA /* LoginViewModel.swift in Sources */,
 				72C4BE3E29A6376C0032CFF2 /* AppDelegate.swift in Sources */,
 				720A19F829E6BCF600265401 /* ArrayExtensions.swift in Sources */,
 				26BCDA2A2579857E00096894 /* UIApplicationExtension.swift in Sources */,

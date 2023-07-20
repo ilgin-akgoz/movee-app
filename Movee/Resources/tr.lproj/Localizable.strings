@@ -5,9 +5,9 @@
   Created by Akgoz, Ilgin on 17.07.2023.
   Copyright © 2023 Adesso Turkey. All rights reserved.
 */
-"email" = "E-posta";
-"password" = "Şifre";
-"forgot_password" = "Şifremi Unuttum";
-"login" = "Giriş Yap";
-"no_account" = "Hesabınız yok mu?";
-"register" = "Şimdi Kaydolun";
+"login.emailField.title" = "E-posta";
+"login.passwordField.title" = "Şifre";
+"login.forgotPasswordButton.title" = "Şifremi Unuttum";
+"login.loginButton.title" = "Giriş Yap";
+"login.noAccount.title" = "Hesabınız yok mu?";
+"login.registerButton.title" = "Şimdi Kaydolun";

@@ -22,7 +22,7 @@ struct SplashView: View {
                     Spacer()
                     Text("We 🤍 movie")
                         .font(.textStyle2)
-                        .foregroundColor(Color("white"))
+                        .foregroundColor(.white)
                         .padding(.bottom, 36)
                 }
             }

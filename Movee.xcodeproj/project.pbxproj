@@ -35,6 +35,7 @@
 		686F40D32A66A4300083FC1F /* NetworkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686F40D22A66A4300083FC1F /* NetworkLoader.swift */; };
 		686F40D52A66A4650083FC1F /* NetworkLoaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686F40D42A66A4650083FC1F /* NetworkLoaderProtocol.swift */; };
 		686F40D72A66BDF10083FC1F /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686F40D62A66BDF10083FC1F /* URLSessionProtocol.swift */; };
+		68AA0B222A68271600B19358 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AA0B212A68271600B19358 /* ColorExtension.swift */; };
 		68BD7F282A654BD300D043D2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68BD7F2A2A654BD300D043D2 /* Localizable.strings */; };
 		68BD7F302A65647800D043D2 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD7F2F2A65647800D043D2 /* FontExtension.swift */; };
 		68BD7F352A65674700D043D2 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD7F342A65674700D043D2 /* SplashView.swift */; };
@@ -134,6 +135,7 @@
 		686F40D22A66A4300083FC1F /* NetworkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoader.swift; sourceTree = "<group>"; };
 		686F40D42A66A4650083FC1F /* NetworkLoaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoaderProtocol.swift; sourceTree = "<group>"; };
 		686F40D62A66BDF10083FC1F /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		68AA0B212A68271600B19358 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		68BD7F292A654BD300D043D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		68BD7F2B2A654BD800D043D2 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		68BD7F2F2A65647800D043D2 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				720A19F729E6BCF600265401 /* ArrayExtensions.swift */,
 				72A7BE1B2A1CA5E000D66097 /* URLExtensions.swift */,
 				68BD7F2F2A65647800D043D2 /* FontExtension.swift */,
+				68AA0B212A68271600B19358 /* ColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				72A7BE1C2A1CA5E000D66097 /* URLExtensions.swift in Sources */,
 				2F56AE8E256E487F0007D0A2 /* StringExtensions.swift in Sources */,
 				2F56AE8A256E44BB0007D0A2 /* UICollectionViewCellExtensions.swift in Sources */,
+				68AA0B222A68271600B19358 /* ColorExtension.swift in Sources */,
 				72C4BE3E29A6376C0032CFF2 /* AppDelegate.swift in Sources */,
 				720A19F829E6BCF600265401 /* ArrayExtensions.swift in Sources */,
 				26BCDA2A2579857E00096894 /* UIApplicationExtension.swift in Sources */,

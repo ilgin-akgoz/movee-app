@@ -11,6 +11,8 @@ import SwiftUI
 struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel()
     @State private var isShowingPassword = false
+    @State private var shouldPresentForgotPasswordView = false
+    @State private var shouldPresentRegisterView = false
     var body: some View {
         ZStack {
             Image("login_background")
@@ -51,9 +53,14 @@ struct LoginView: View {
         HStack {
             Spacer()
             Button {
+                shouldPresentForgotPasswordView = true
             } label: {
                 Text("login.forgotPasswordButton.title")
                     .padding(.trailing, 24)
+            }
+            .sheet(isPresented: $shouldPresentForgotPasswordView) {
+                WebView(url: URL(string: "https://www.themoviedb.org/reset-password"))
+                    .ignoresSafeArea()
             }
         }
         .padding(.top, 24)
@@ -75,9 +82,14 @@ struct LoginView: View {
             Text("login.noAccount.title")
                 .foregroundColor(Color.lightGreyBlue)
             Button {
+                shouldPresentRegisterView = true
             } label: {
                 Text("login.registerButton.title")
                     .foregroundColor(.white)
+            }
+            .sheet(isPresented: $shouldPresentRegisterView) {
+                WebView(url: URL(string: "https://www.themoviedb.org/signup"))
+                    .ignoresSafeArea()
             }
         }
         .padding(.top, 25)

@@ -18,20 +18,36 @@ class LoginViewModel: ObservableObject {
     }
     func login() async {
         do {
-            let authResponse = try await loginService.getAuthenticationToken()
-            let requestToken = authResponse.requestToken
-            let loginRequestModel = LoginRequestModel(username: email,
-                                                    password: password,
-                                                    requestToken: requestToken)
-            let loginResponse = try await loginService.loginWithToken(requestModel: loginRequestModel)
-            let validatedToken = loginResponse.requestToken
-            let sessionRequestModel = SessionRequestModel(requestToken: validatedToken)
-            let sessionResponse = try await loginService.createSession(requestModel: sessionRequestModel)
-            let sessionId = sessionResponse.sessionId
+            let requestToken = try await fetchRequestToken()
+            let validatedToken = try await fetchValidatedToken(with: requestToken)
+            saveToken(validatedToken)
         } catch {
             DispatchQueue.main.async {
                 self.showLoginFailedView = true
             }
+        }
+    }
+    func fetchRequestToken() async throws -> String {
+        let authResponse = try await loginService.getAuthenticationToken()
+        return authResponse.requestToken
+    }
+    func fetchValidatedToken(with token: String) async throws -> String {
+        let loginRequestModel = LoginRequestModel(username: email,
+                                                 password: password,
+                                                 requestToken: token)
+        let loginResponse = try await loginService.loginWithToken(requestModel: loginRequestModel)
+        return loginResponse.requestToken
+    }
+    func fetchSessionId(_ validatedToken: String) async throws -> String {
+        let sessionRequestModel = SessionRequestModel(requestToken: validatedToken)
+        let sessionResponse = try await loginService.createSession(requestModel: sessionRequestModel)
+        return sessionResponse.sessionId
+    }
+    func saveToken(_ validatedToken: String) {
+        do {
+            try KeychainManager.saveToken(validatedToken, forKey: "\(email)")
+        } catch {
+            print(error)
         }
     }
 }

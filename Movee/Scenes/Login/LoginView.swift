@@ -27,6 +27,13 @@ struct LoginView: View {
                 registerView
             }
         }
+        .overlay {
+            if viewModel.showLoginFailedView {
+                Color.black.opacity(0.5)
+                LoginFailedView(isPresented: $viewModel.showLoginFailedView)
+                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+            }
+        }
     }
     private var emailAndPasswordView: some View {
         VStack(alignment: .leading) {
@@ -68,6 +75,9 @@ struct LoginView: View {
     }
     private var loginButton: some View {
         Button {
+            Task {
+                await viewModel.login()
+            }
         } label: {
             Text("login.loginButton.title")
                 .frame(width: 327, height: 45)

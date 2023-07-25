@@ -11,3 +11,5 @@
 "login.loginButton.title" = "Login";
 "login.noAccount.title" = "Don't have an account?";
 "login.registerButton.title" = "Register Now";
+"login.loginFailed.title" = "Incorrect email or password.";
+"login.okayButton.title" = "Okay";

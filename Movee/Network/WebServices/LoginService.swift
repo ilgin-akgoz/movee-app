@@ -11,7 +11,6 @@ import Foundation
 protocol LoginServiceProtocol {
     func getAuthenticationToken() async throws -> AuthenticationTokenResponseModel
     func loginWithToken(requestModel: LoginRequestModel) async throws -> LoginWithTokenResponseModel
-    func createSession(requestModel: SessionRequestModel) async throws -> CreateSessionResponseModel
 }
 
 final class LoginService: LoginServiceProtocol, BaseServiceProtocol {
@@ -34,16 +33,5 @@ final class LoginService: LoginServiceProtocol, BaseServiceProtocol {
                 body: jsonData
             ),
             responseModel: LoginWithTokenResponseModel.self)
-    }
-    func createSession(requestModel: SessionRequestModel) async throws -> CreateSessionResponseModel {
-        let jsonData = try JSONEncoder().encode(requestModel)
-        return try await request(
-            with: RequestObject(
-                url: build(endpoint: .createSession),
-                method: .post,
-                headers: ["Content-Type": "application/json"],
-                body: jsonData
-            ),
-            responseModel: CreateSessionResponseModel.self)
     }
 }

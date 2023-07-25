@@ -33,11 +33,9 @@
 		684C60832A6E8F13001C326A /* TargetEndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60822A6E8F13001C326A /* TargetEndpointProtocol.swift */; };
 		684C60852A6E8FB9001C326A /* LoginEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60842A6E8FB9001C326A /* LoginEndpoints.swift */; };
 		684C60882A6E920C001C326A /* AuthenticationTokenResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60872A6E920C001C326A /* AuthenticationTokenResponseModel.swift */; };
-		684C608B2A6E92A5001C326A /* CreateSessionResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C608A2A6E92A5001C326A /* CreateSessionResponseModel.swift */; };
 		684C608D2A6E931B001C326A /* LoginWithTokenResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C608C2A6E931B001C326A /* LoginWithTokenResponseModel.swift */; };
 		684C60902A6E97B9001C326A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C608F2A6E97B9001C326A /* LoginService.swift */; };
 		684C60932A6E99F8001C326A /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60922A6E99F8001C326A /* LoginRequestModel.swift */; };
-		684C60952A6E9A52001C326A /* SessionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60942A6E9A52001C326A /* SessionRequestModel.swift */; };
 		684C60972A6E9BB4001C326A /* NetworkLoaderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60962A6E9BB4001C326A /* NetworkLoaderProvider.swift */; };
 		684C60992A6E9F0F001C326A /* BaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60982A6E9F0F001C326A /* BaseServiceProtocol.swift */; };
 		684C609D2A6EED0C001C326A /* LoginFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C609C2A6EED0C001C326A /* LoginFailedView.swift */; };
@@ -151,11 +149,9 @@
 		684C60822A6E8F13001C326A /* TargetEndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetEndpointProtocol.swift; sourceTree = "<group>"; };
 		684C60842A6E8FB9001C326A /* LoginEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoints.swift; sourceTree = "<group>"; };
 		684C60872A6E920C001C326A /* AuthenticationTokenResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTokenResponseModel.swift; sourceTree = "<group>"; };
-		684C608A2A6E92A5001C326A /* CreateSessionResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionResponseModel.swift; sourceTree = "<group>"; };
 		684C608C2A6E931B001C326A /* LoginWithTokenResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithTokenResponseModel.swift; sourceTree = "<group>"; };
 		684C608F2A6E97B9001C326A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		684C60922A6E99F8001C326A /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
-		684C60942A6E9A52001C326A /* SessionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequestModel.swift; sourceTree = "<group>"; };
 		684C60962A6E9BB4001C326A /* NetworkLoaderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoaderProvider.swift; sourceTree = "<group>"; };
 		684C60982A6E9F0F001C326A /* BaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseServiceProtocol.swift; sourceTree = "<group>"; };
 		684C609C2A6EED0C001C326A /* LoginFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFailedView.swift; sourceTree = "<group>"; };
@@ -428,7 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				684C60872A6E920C001C326A /* AuthenticationTokenResponseModel.swift */,
-				684C608A2A6E92A5001C326A /* CreateSessionResponseModel.swift */,
 				684C608C2A6E931B001C326A /* LoginWithTokenResponseModel.swift */,
 			);
 			path = Login;
@@ -446,7 +441,6 @@
 			isa = PBXGroup;
 			children = (
 				684C60922A6E99F8001C326A /* LoginRequestModel.swift */,
-				684C60942A6E9A52001C326A /* SessionRequestModel.swift */,
 			);
 			path = RequestModels;
 			sourceTree = "<group>";
@@ -793,12 +787,10 @@
 				684C60972A6E9BB4001C326A /* NetworkLoaderProvider.swift in Sources */,
 				684C608D2A6E931B001C326A /* LoginWithTokenResponseModel.swift in Sources */,
 				72B4409829967738004D1FC5 /* UIImagePickerControllerSourceTypeExtension.swift in Sources */,
-				684C60952A6E9A52001C326A /* SessionRequestModel.swift in Sources */,
 				684C60812A6E8EED001C326A /* BaseEndpoint.swift in Sources */,
 				68BD7F302A65647800D043D2 /* FontExtension.swift in Sources */,
 				72B440942996688B004D1FC5 /* BigButtonTextModifier.swift in Sources */,
 				D1AC819728F69C4500E5B0AE /* OnFirstAppearModifier.swift in Sources */,
-				684C608B2A6E92A5001C326A /* CreateSessionResponseModel.swift in Sources */,
 				2FCDE1572566AE2700203445 /* UITableViewExtensions.swift in Sources */,
 				2F56AE88256E44A10007D0A2 /* UITableViewCellExtensions.swift in Sources */,
 				68875EE42A6FD99A00CED806 /* KeychainManager.swift in Sources */,

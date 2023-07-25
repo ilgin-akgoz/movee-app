@@ -38,11 +38,6 @@ class LoginViewModel: ObservableObject {
         let loginResponse = try await loginService.loginWithToken(requestModel: loginRequestModel)
         return loginResponse.requestToken
     }
-    func fetchSessionId(_ validatedToken: String) async throws -> String {
-        let sessionRequestModel = SessionRequestModel(requestToken: validatedToken)
-        let sessionResponse = try await loginService.createSession(requestModel: sessionRequestModel)
-        return sessionResponse.sessionId
-    }
     func saveToken(_ validatedToken: String) {
         do {
             try KeychainManager.saveToken(validatedToken, forKey: "\(email)")

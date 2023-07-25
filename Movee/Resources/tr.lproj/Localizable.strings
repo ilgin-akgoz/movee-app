@@ -11,3 +11,5 @@
 "login.loginButton.title" = "Giriş Yap";
 "login.noAccount.title" = "Hesabınız yok mu?";
 "login.registerButton.title" = "Şimdi Kaydolun";
+"login.loginFailed.title" = "E-posta veya şifre yanlış.";
+"login.okayButton.title" = "Tamam";

@@ -10,11 +10,13 @@ import Foundation
 import Security
 
 final class KeychainManager {
+    static let instance = KeychainManager()
+    private init(){}
     enum KeychainError: Error {
         case duplicateEntry
         case unknown(OSStatus)
     }
-    static func saveToken(_ token: String, forKey key: String) throws {
+    func saveToken(_ token: String, forKey key: String) throws {
         if let data = token.data(using: .utf8) {
             let query: [String: Any] = [
                 kSecClass as String: kSecClassGenericPassword,
@@ -31,7 +33,7 @@ final class KeychainManager {
             }
         }
     }
-    static func getToken(forKey key: String) -> String? {
+    func getToken(forKey key: String) -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,

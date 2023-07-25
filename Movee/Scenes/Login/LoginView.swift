@@ -29,9 +29,11 @@ struct LoginView: View {
         }
         .overlay {
             if viewModel.showLoginFailedView {
-                Color.black.opacity(0.5)
-                LoginFailedView(isPresented: $viewModel.showLoginFailedView)
-                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+                ZStack {
+                    Color.black.opacity(0.5)
+                    LoginFailedView(isPresented: $viewModel.showLoginFailedView)
+                        .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+                }
             }
         }
     }

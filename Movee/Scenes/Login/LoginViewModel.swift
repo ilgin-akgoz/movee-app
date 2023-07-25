@@ -27,20 +27,20 @@ class LoginViewModel: ObservableObject {
             }
         }
     }
-    func fetchRequestToken() async throws -> String {
+    private func fetchRequestToken() async throws -> String {
         let authResponse = try await loginService.getAuthenticationToken()
         return authResponse.requestToken
     }
-    func fetchValidatedToken(with token: String) async throws -> String {
+    private func fetchValidatedToken(with token: String) async throws -> String {
         let loginRequestModel = LoginRequestModel(username: email,
                                                  password: password,
                                                  requestToken: token)
         let loginResponse = try await loginService.loginWithToken(requestModel: loginRequestModel)
         return loginResponse.requestToken
     }
-    func saveToken(_ validatedToken: String) {
+    private func saveToken(_ validatedToken: String) {
         do {
-            try KeychainManager.saveToken(validatedToken, forKey: "\(email)")
+            try KeychainManager.instance.saveToken(validatedToken, forKey: "accessToken")
         } catch {
             print(error)
         }

@@ -24,13 +24,12 @@ final class LoginService: LoginServiceProtocol, BaseServiceProtocol {
                                             responseModel: AuthenticationTokenResponseModel.self)
     }
     func loginWithToken(requestModel: LoginRequestModel) async throws -> LoginWithTokenResponseModel {
-        let jsonData = try JSONEncoder().encode(requestModel)
         return try await request(
             with: RequestObject(
                 url: build(endpoint: .loginWithToken),
                 method: .post,
-                headers: ["Content-Type": "application/json"],
-                body: jsonData
+                data: requestModel,
+                headers: ["Content-Type": "application/json"]
             ),
             responseModel: LoginWithTokenResponseModel.self)
     }

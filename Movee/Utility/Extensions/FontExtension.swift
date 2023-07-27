@@ -25,7 +25,7 @@ extension Font {
         return .system(size: 17.0, weight: .semibold)
     }
     static var textStyle7: Font {
-        return .system(size: 15.0, weight: .medium)
+        return .system(size: 22.0, weight: .bold)
     }
     static var textStyle2: Font {
         return .system(size: 15.0, weight: .medium)

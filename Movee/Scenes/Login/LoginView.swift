@@ -29,11 +29,10 @@ struct LoginView: View {
         }
         .overlay {
             if viewModel.showLoginFailedView {
-                ZStack {
-                    Color.black.opacity(0.5)
-                    LoginFailedView(isPresented: $viewModel.showLoginFailedView)
-                        .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
-                }
+                loginFailedView
+            }
+            if viewModel.showMainView {
+                mainView
             }
         }
     }
@@ -106,6 +105,18 @@ struct LoginView: View {
         }
         .padding(.top, 25)
         .font(.system(size: 12, weight: .medium))
+    }
+    private var loginFailedView: some View {
+        ZStack {
+            Color.black.opacity(0.5)
+            LoginFailedView(isPresented: $viewModel.showLoginFailedView)
+                .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+        }
+    }
+    private var mainView: some View {
+        ZStack {
+            MainView()
+        }
     }
 }
 

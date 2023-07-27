@@ -28,7 +28,7 @@ struct MoveeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            MainView()
                 .onChange(of: phase, perform: manageChanges(for:))
                 .onOpenURL(perform: onOpenURL(_:))
         }

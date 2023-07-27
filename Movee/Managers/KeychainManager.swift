@@ -11,7 +11,7 @@ import Security
 
 final class KeychainManager {
     static let instance = KeychainManager()
-    private init(){}
+    private init() {}
     enum KeychainError: Error {
         case duplicateEntry
         case unknown(OSStatus)

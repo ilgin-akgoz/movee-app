@@ -12,6 +12,7 @@ class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var showLoginFailedView = false
+    @Published var showMainView = false
     private let loginService: LoginServiceProtocol
     init(loginService: LoginServiceProtocol = LoginService()) {
         self.loginService = loginService
@@ -21,6 +22,9 @@ class LoginViewModel: ObservableObject {
             let requestToken = try await fetchRequestToken()
             let validatedToken = try await fetchValidatedToken(with: requestToken)
             saveToken(validatedToken)
+            DispatchQueue.main.async {
+                self.showMainView = true
+            }
         } catch {
             DispatchQueue.main.async {
                 self.showLoginFailedView = true

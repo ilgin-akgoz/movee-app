@@ -18,42 +18,50 @@ struct PopularMovieCardView: View {
                 .foregroundColor(.white)
                 .cornerRadius(8)
             HStack {
-                AsyncImage(url: movie.posterURL) { image in
-                    image
-                        .resizable()
-                        .frame(width: 70, height: 100)
-                        .roundedCorner(8, corners: [.topLeft, .bottomLeft])
-                } placeholder: {
-                    Image("dummy_image")
-                        .resizable()
-                        .frame(width: 70, height: 100)
-                        .roundedCorner(8, corners: [.topLeft, .bottomLeft])
-                }
-                VStack(alignment: .leading) {
-                    Text(movie.title)
-                        .font(.textStyle8)
-                        .padding(.top, 10)
-                        .padding(.bottom, 5)
-                    Text(movieGenresText)
-                        .font(.system(size: 15, weight: .regular))
-                        .foregroundColor(.almostBlack)
-                    HStack {
-                        Image("calendar")
-                        Text(movie.formattedReleaseDate)
-                            .font(.textStyle9)
-                        Divider()
-                            .frame(width: 12, height: 1)
-                            .foregroundColor(.almostBlack)
-                        RatingView(rating: movie.ratingText)
-                    }
-                    .padding(.bottom, 18)
-                }
+                moviePosterImage
+                movieInfo
             }
         }
     }
+    private var moviePosterImage: some View {
+        AsyncImage(url: movie.posterURL) { image in
+            image
+                .resizable()
+                .frame(width: 70, height: 100)
+                .roundedCorner(8, corners: [.topLeft, .bottomLeft])
+        } placeholder: {
+            Image("dummy_image")
+                .resizable()
+                .frame(width: 70, height: 100)
+                .roundedCorner(8, corners: [.topLeft, .bottomLeft])
+        }
+    }
+    private var movieInfo: some View {
+        VStack(alignment: .leading) {
+            Text(movie.title)
+                .font(.textStyle8)
+                .padding(.top, 10)
+                .padding(.bottom, 5)
+            Text(movieGenresText)
+                .font(.system(size: 15, weight: .regular))
+                .foregroundColor(.almostBlack)
+            releaseDateAndRatingView
+        }
+    }
+    private var releaseDateAndRatingView: some View {
+        HStack {
+            Image("calendar")
+            Text(movie.formattedReleaseDate)
+                .font(.textStyle9)
+            Divider()
+                .frame(width: 12, height: 1)
+                .foregroundColor(.almostBlack)
+            RatingView(rating: movie.ratingText)
+        }
+        .padding(.bottom, 18)
+    }
     private var movieGenresText: String {
-        let genres = MoviesViewModel().getGenreNames(movie: movie, genres: genres)
-        return genres.joined(separator: ", ")
+        return MoviesViewModel().getGenreNames(movie: movie, genres: genres).joined(separator: ", ")
     }
 }
 
@@ -69,7 +77,7 @@ struct PopularMovieCardView_Previews: PreviewProvider {
                                                     popularity: 6058.224,
                                                     voteAverage: 7.6,
                                                     isAdult: false,
-                                                    releaseDate: ""),
+                                                    releaseDate: Date()),
                                                     genres: [MovieGenreItemResponseModel(
                                                         genreID: 12,
                                                         name: "Adventure")

@@ -29,7 +29,6 @@ class MovieDetailViewModel: ObservableObject {
         }
     }
     private func fetchMovieDetails() async throws -> MovieDetailResponseModel {
-        let response = try await movieDetailService.getMovieDetails(for: movieID)
-        return response
+        try await movieDetailService.getMovieDetails(for: movieID)
     }
 }

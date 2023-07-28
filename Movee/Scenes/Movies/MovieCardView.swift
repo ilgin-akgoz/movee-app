@@ -12,41 +12,46 @@ struct MovieCardView: View {
     let movie: MovieResponseModel
     let genres: [MovieGenreItemResponseModel]
     var body: some View {
+        VStack {
+            moviePosterImage
+            movieInfo
+        }
+    }
+    private var moviePosterImage: some View {
+        AsyncImage(url: movie.posterURL) { image in
+            image
+                .resizable()
+                .frame(width: 260, height: 373, alignment: .center)
+                .padding(.top, 85)
+                .padding(.horizontal, 58)
+        } placeholder: {
+            Image("dummy_image")
+                .resizable()
+                .frame(width: 260, height: 373)
+                .padding(.top, 85)
+                .padding(.horizontal, 58)
+        }
+    }
+    private var movieInfo: some View {
         VStack(alignment: .leading) {
-            AsyncImage(url: movie.posterURL) { image in
-                image
-                    .resizable()
-                    .frame(width: 260, height: 373, alignment: .center)
-                    .padding(.top, 85)
-                    .padding(.horizontal, 58)
-            } placeholder: {
-                Image("dummy_image")
-                    .resizable()
-                    .frame(width: 260, height: 373)
-                    .padding(.top, 85)
-                    .padding(.horizontal, 58)
-            }
             RatingView(rating: movie.ratingText)
-                .padding(.leading, 24)
                 .padding(.top, 10)
             Text(movie.title)
                 .font(.textStyle11)
                 .lineLimit(1)
-                .padding(.leading, 24)
                 .foregroundColor(.almostBlack)
             Text(movieGenresText)
                 .font(.textStyle2)
                 .padding(.bottom, 20)
-                .padding(.leading, 24)
                 .foregroundColor(.almostBlack)
             Divider()
-                .padding(.horizontal, 24)
+                .padding(.trailing, 24)
                 .padding(.bottom, 20)
         }
+        .padding(.leading, 24)
     }
     private var movieGenresText: String {
-        let genres = MoviesViewModel().getGenreNames(movie: movie, genres: genres)
-        return genres.joined(separator: ", ")
+        return MoviesViewModel().getGenreNames(movie: movie, genres: genres).joined(separator: ", ")
     }
 }
 
@@ -60,7 +65,7 @@ struct MovieCardView_Previews: PreviewProvider {
                                                 backdropPath: "",
                                                 popularity: 6058.224,
                                                 voteAverage: 7.6,
-                                                isAdult: false, releaseDate: ""),
+                                                isAdult: false, releaseDate: Date()),
                                                 genres: [MovieGenreItemResponseModel(
                                                     genreID: 12,
                                                     name: "Action")])

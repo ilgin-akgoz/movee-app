@@ -11,12 +11,12 @@ import Foundation
 enum MovieDetailEndpoints: TargetEndpointProtocol {
     case movieDetail(movieID: Int)
     private struct Constants {
-        static let movieDetail = "movie/:"
+        static let movieDetail = "movie/%d"
     }
     var path: String {
         switch self {
         case .movieDetail(let movieID):
-            return BaseEndpoint.base.path + Constants.movieDetail + "\(movieID)" + BaseEndpoint.apiKey.path
+            return String(format: BaseEndpoint.base.path + Constants.movieDetail, movieID) + BaseEndpoint.apiKey.path
         }
     }
 }

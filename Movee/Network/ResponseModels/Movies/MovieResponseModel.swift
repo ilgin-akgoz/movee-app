@@ -18,7 +18,7 @@ struct MovieResponseModel: Decodable {
     let popularity: Double
     let voteAverage: Double
     let isAdult: Bool
-    let releaseDate: String?
+    let releaseDate: Date?
     enum CodingKeys: String, CodingKey {
         case movieID = "id"
         case title
@@ -38,15 +38,6 @@ struct MovieResponseModel: Decodable {
         return String(format: "%.1f", voteAverage)
     }
     var formattedReleaseDate: String {
-        if let dateStr = releaseDate {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-
-            if let date = dateFormatter.date(from: dateStr) {
-                dateFormatter.dateFormat = "dd.MM.yyyy"
-                return dateFormatter.string(from: date)
-            }
-        }
-        return "dd.mm.yyyy"
+        return DateFormatter.dayFirstFormatter.string(from: releaseDate ?? Date())
     }
 }

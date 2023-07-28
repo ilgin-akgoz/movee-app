@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct MainView: View {
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
     var body: some View {
         TabView {
             MoviesView()

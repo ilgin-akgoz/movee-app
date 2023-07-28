@@ -18,12 +18,10 @@ struct RatingView: View {
                 .cornerRadius(12)
             HStack {
                 Image("star")
-                    .foregroundColor(.white)
                 Text(rating)
-                    .foregroundColor(.white)
                     .font(.textStyle10)
             }
-            .frame(alignment: .topLeading)
+            .foregroundColor(.white)
         }
     }
 }

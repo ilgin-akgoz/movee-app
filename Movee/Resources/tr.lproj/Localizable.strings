@@ -14,7 +14,7 @@
 "login.loginFailed.title" = "E-posta veya şifre yanlış.";
 "login.okayButton.title" = "Tamam";
 "movies.navigationTitle" = "Filmler";
-"movies.popular.Title" = "Popüler";
+"movies.popular.title" = "Popüler";
 "movies.genres.action" = "Aksiyon";
 "movies.genres.adventure" = "Macera";
 "movies.genres.animation" = "Animasyon";

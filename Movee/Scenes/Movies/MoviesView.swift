@@ -10,9 +10,6 @@ import SwiftUI
 
 struct MoviesView: View {
     @StateObject private var viewModel = MoviesViewModel()
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-    }
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
@@ -56,7 +53,7 @@ struct MoviesView: View {
     }
     private var popularMoviesView: some View {
         VStack(alignment: .leading) {
-            Text("movies.popular.Title")
+            Text("movies.popular.title")
                 .font(.textStyle7)
                 .padding(.leading, 24)
             ForEach(viewModel.popularMovies, id: \.movieID) { movie in

@@ -11,34 +11,12 @@ import SwiftUI
 struct MovieDetailView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            Image("dummy_image")
-                    .resizable()
-                    .frame(width: 400, height: 400)
-                    .ignoresSafeArea()
+            moviePosterImage
             RatingView(rating: "0.0")
                 .offset(y: -65)
                 .padding(.leading, 24)
-            Text("Joker")
-                .font(.textStyle11)
-                .padding(.top, -60)
-                .padding(.leading, 24)
-            Text("Crime, Drama, Thriller")
-                .font(.textStyle2)
-                .padding(.top, -40)
-                .padding(.leading, 24)
-            HStack {
-                Image("time")
-                Text("122 min")
-                Divider()
-                    .frame(width: 12, height: 1)
-                    .foregroundColor(.almostBlack)
-                Image("calendar")
-                Text("dd.mm.yyyy")
-            }
-            .padding(.top, -24)
-            .padding(.leading, 24)
-            .font(.system(size: 15, weight: .regular))
-            .foregroundColor(.almostBlack)
+            titleAndGenres
+            durationAndReleaseDate
             Divider()
                 .frame(width: 327, height: 1)
                 .foregroundColor(.almostBlack)
@@ -48,6 +26,39 @@ struct MovieDetailView: View {
                 .padding(.horizontal, 24)
             Spacer()
         }
+    }
+    private var moviePosterImage: some View {
+        Image("dummy_image")
+                .resizable()
+                .frame(width: 400, height: 400)
+                .ignoresSafeArea()
+    }
+    private var titleAndGenres: some View {
+        VStack(alignment: .leading) {
+            Text("Joker")
+                .font(.textStyle11)
+                .padding(.top, -60)
+                .padding(.leading, 24)
+            Text("Crime, Drama, Thriller")
+                .font(.textStyle2)
+                .padding(.top, -40)
+                .padding(.leading, 24)
+        }
+    }
+    private var durationAndReleaseDate: some View {
+        HStack {
+            Image("time")
+            Text("122 min")
+            Divider()
+                .frame(width: 12, height: 1)
+                .foregroundColor(.almostBlack)
+            Image("calendar")
+            Text("dd.mm.yyyy")
+        }
+        .padding(.top, -24)
+        .padding(.leading, 24)
+        .font(.system(size: 15, weight: .regular))
+        .foregroundColor(.almostBlack)
     }
 }
 

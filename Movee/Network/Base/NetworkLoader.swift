@@ -10,5 +10,5 @@ import Foundation
 
 class NetworkLoader: NetworkLoaderProtocol {
     var session: URLSessionProtocol = URLSession.shared
-    var decoder: JSONDecoder = JSONDecoder()
+    var decoder: JSONDecoder = JSONDecoder.customDecoder
 }

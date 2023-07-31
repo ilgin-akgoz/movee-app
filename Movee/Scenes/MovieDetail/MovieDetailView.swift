@@ -11,10 +11,8 @@ import SwiftUI
 struct MovieDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: MovieDetailViewModel
-    let movieID: Int
-    init(movieID: Int) {
-        self.movieID = movieID
-        _viewModel = StateObject(wrappedValue: MovieDetailViewModel(movieID: movieID))
+    init(viewModel: MovieDetailViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -96,6 +94,6 @@ struct MovieDetailView: View {
 
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView(movieID: 346698)
+        MovieDetailView(viewModel: MovieDetailViewModel(movieID: 346698))
     }
 }

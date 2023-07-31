@@ -11,6 +11,7 @@ import Foundation
 class MoviesViewModel: ObservableObject {
     @Published var nowPlayingMovies: [MovieDataModel] = []
     @Published var popularMovies: [MovieDataModel] = []
+    @Published var isLoading: Bool = true
     private let movieService: MovieServiceProtocol
     init(movieService: MovieServiceProtocol = MovieService()) {
         self.movieService = movieService
@@ -38,6 +39,7 @@ class MoviesViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.nowPlayingMovies = self.matchGenresForMovies(movies: nowPlayingMovies, genres: movieGenres)
                 self.popularMovies = self.matchGenresForMovies(movies: popularMovies, genres: movieGenres)
+                self.isLoading = false
             }
         } catch {
             print("\(error)")

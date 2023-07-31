@@ -27,6 +27,14 @@ struct MoviesView: View {
                 .padding(.top, 68)
                 .background(Color.whiteTwo)
             }
+            .overlay {
+                if viewModel.isLoading {
+                    ZStack {
+                        Color.whiteTwo
+                        ProgressView()
+                    }
+                }
+            }
         }
         .onAppear {
             Task {

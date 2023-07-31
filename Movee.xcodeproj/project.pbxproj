@@ -28,6 +28,8 @@
 		2FCDE0FF2565722600203445 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FCDE0FE2565722600203445 /* Assets.xcassets */; };
 		2FCDE1572566AE2700203445 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDE1562566AE2700203445 /* UITableViewExtensions.swift */; };
 		683F12F72A7592940047A160 /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683F12F62A7592940047A160 /* MovieDataModel.swift */; };
+		683F12FB2A77BB1F0047A160 /* AppearanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683F12FA2A77BB1F0047A160 /* AppearanceService.swift */; };
+		683F12FD2A77C1C10047A160 /* LocaleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683F12FC2A77C1C10047A160 /* LocaleEndpoint.swift */; };
 		684C60772A6E646E001C326A /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60762A6E646E001C326A /* WebView.swift */; };
 		684C60792A6E8991001C326A /* ConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60782A6E8991001C326A /* ConfigurationProtocol.swift */; };
 		684C60812A6E8EED001C326A /* BaseEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684C60802A6E8EED001C326A /* BaseEndpoint.swift */; };
@@ -166,6 +168,8 @@
 		2FCDE1352566520A00203445 /* AppStore.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppStore.xcconfig; sourceTree = "<group>"; };
 		2FCDE1562566AE2700203445 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		683F12F62A7592940047A160 /* MovieDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataModel.swift; sourceTree = "<group>"; };
+		683F12FA2A77BB1F0047A160 /* AppearanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceService.swift; sourceTree = "<group>"; };
+		683F12FC2A77C1C10047A160 /* LocaleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleEndpoint.swift; sourceTree = "<group>"; };
 		684C60762A6E646E001C326A /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		684C60782A6E8991001C326A /* ConfigurationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationProtocol.swift; sourceTree = "<group>"; };
 		684C60802A6E8EED001C326A /* BaseEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEndpoint.swift; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				26BCDA242579852700096894 /* LoggingService.swift */,
+				683F12FA2A77BB1F0047A160 /* AppearanceService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				684C60842A6E8FB9001C326A /* LoginEndpoints.swift */,
 				68E330312A7122E000592DCE /* MovieEndpoints.swift */,
 				6880B6562A728B6800125064 /* MovieDetailEndpoints.swift */,
+				683F12FC2A77C1C10047A160 /* LocaleEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -880,6 +886,7 @@
 				727273812A1CBAB60050D236 /* MapApplication.swift in Sources */,
 				72A7BE1C2A1CA5E000D66097 /* URLExtensions.swift in Sources */,
 				68875EFD2A71206300CED806 /* MovieService.swift in Sources */,
+				683F12FB2A77BB1F0047A160 /* AppearanceService.swift in Sources */,
 				2F56AE8E256E487F0007D0A2 /* StringExtensions.swift in Sources */,
 				68DEE2F32A69350E0048447F /* PasswordFieldView.swift in Sources */,
 				2F56AE8A256E44BB0007D0A2 /* UICollectionViewCellExtensions.swift in Sources */,
@@ -916,6 +923,7 @@
 				68BD7F302A65647800D043D2 /* FontExtension.swift in Sources */,
 				72B440942996688B004D1FC5 /* BigButtonTextModifier.swift in Sources */,
 				D1AC819728F69C4500E5B0AE /* OnFirstAppearModifier.swift in Sources */,
+				683F12FD2A77C1C10047A160 /* LocaleEndpoint.swift in Sources */,
 				688E57032A71A9B800112801 /* RatingView.swift in Sources */,
 				2FCDE1572566AE2700203445 /* UITableViewExtensions.swift in Sources */,
 				2F56AE88256E44A10007D0A2 /* UITableViewCellExtensions.swift in Sources */,

@@ -16,7 +16,10 @@ enum MovieDetailEndpoints: TargetEndpointProtocol {
     var path: String {
         switch self {
         case .movieDetail(let movieID):
-            return String(format: BaseEndpoint.base.path + Constants.movieDetail, movieID) + BaseEndpoint.apiKey.path
+            return BaseEndpoint.base.path +
+            String(format: Constants.movieDetail, movieID) +
+            BaseEndpoint.apiKey.path +
+            LocaleEndpoint.deviceLanguage.path
         }
     }
 }

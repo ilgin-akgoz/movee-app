@@ -20,11 +20,20 @@ enum MovieEndpoints: TargetEndpointProtocol {
     var path: String {
         switch self {
         case .nowPlayingMovies:
-            return BaseEndpoint.base.path + Constants.nowPlayingMovies + BaseEndpoint.apiKey.path
+            return BaseEndpoint.base.path +
+            Constants.nowPlayingMovies +
+            BaseEndpoint.apiKey.path +
+            LocaleEndpoint.deviceLanguage.path
         case .popularMovies:
-            return BaseEndpoint.base.path + Constants.popularMovies + BaseEndpoint.apiKey.path
+            return BaseEndpoint.base.path +
+            Constants.popularMovies +
+            BaseEndpoint.apiKey.path +
+            LocaleEndpoint.deviceLanguage.path
         case .movieGenre:
-            return BaseEndpoint.base.path + Constants.movieGenre + BaseEndpoint.apiKey.path
+            return BaseEndpoint.base.path +
+            Constants.movieGenre +
+            BaseEndpoint.apiKey.path +
+            LocaleEndpoint.deviceLanguage.path
         }
     }
 }

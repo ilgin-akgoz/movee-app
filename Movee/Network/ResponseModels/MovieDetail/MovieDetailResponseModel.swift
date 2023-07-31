@@ -37,10 +37,10 @@ struct MovieDetailResponseModel: Decodable {
         DateFormatter.dayFirstFormatter.string(from: releaseDate ?? Date())
     }
     var durationText: String {
-        "\(runtime) " + "movie.detail.duration".localized
+        String(format: "%d %@", runtime, "movie.detail.duration".localized)
     }
     var genresText: String {
         let firstThreeGenres = genres.prefix(3).map { $0 }
-        return firstThreeGenres.map { $0.name.localized }.joined(separator: ", ")
+        return firstThreeGenres.map { $0.name }.joined(separator: ", ")
     }
 }

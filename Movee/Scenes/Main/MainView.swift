@@ -9,13 +9,6 @@
 import SwiftUI
 
 struct MainView: View {
-    init() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor(named: "vibrantBlue")
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-    }
     var body: some View {
         TabView {
             MoviesView()

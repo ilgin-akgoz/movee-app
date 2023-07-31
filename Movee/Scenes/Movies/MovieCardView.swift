@@ -21,12 +21,14 @@ struct MovieCardView: View {
             image
                 .resizable()
                 .frame(width: 260, height: 373)
+                .cornerRadius(8)
                 .padding(.top, 85)
                 .padding(.horizontal, 58)
         } placeholder: {
             Image("dummy_image")
                 .resizable()
                 .frame(width: 260, height: 373)
+                .cornerRadius(8)
                 .padding(.top, 85)
                 .padding(.horizontal, 58)
         }

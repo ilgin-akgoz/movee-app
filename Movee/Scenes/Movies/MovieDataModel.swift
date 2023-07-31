@@ -25,7 +25,7 @@ struct MovieDataModel {
         DateFormatter.dayFirstFormatter.string(from: releaseDate ?? Date())
     }
     var genresText: String {
-        let firstThreeGenres = genres.prefix(3).map { $0.localized }
+        let firstThreeGenres = genres.prefix(3).map { $0 }
         return firstThreeGenres.joined(separator: ", ")
     }
 }

@@ -10,8 +10,7 @@ import UIKit
 extension String {
 
     var localized: String {
-        let key = self.replacingOccurrences(of: " ", with: "_")
-        return NSLocalizedString(key, comment: "") // swiftlint:disable:this nslocalizedstring_key
+        NSLocalizedString(self, comment: "") // swiftlint:disable:this nslocalizedstring_key
     }
 
     func localized(withComment comment: String,

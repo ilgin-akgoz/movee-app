@@ -28,9 +28,10 @@ struct LoginFailedView: View {
                     }
                     .offset(x: 0, y: -26)
                 Text("login.loginFailed.title")
-                    .font(.textStyle7)
+                    .font(.textStyle2)
                     .padding(.horizontal, 32)
                     .padding(.vertical, 24)
+                    .foregroundColor(.almostBlack)
                 Button {
                     isPresented = false
                 } label: {

@@ -13,7 +13,7 @@ struct MovieDetailResponseModel: Decodable {
     let title: String
     let voteAverage: Double
     let releaseDate: Date?
-    let genres: [MovieGenreItemResponseModel]?
+    let genres: [MovieGenreItemResponseModel]
     let runtime: Int
     let overview: String
     let posterPath: String?
@@ -28,12 +28,19 @@ struct MovieDetailResponseModel: Decodable {
         case posterPath = "poster_path"
     }
     var posterURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
+        URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
     }
     var ratingText: String {
-        return String(format: "%.1f", voteAverage)
+        String(format: "%.1f", voteAverage)
     }
     var formattedReleaseDate: String {
-        return DateFormatter.dayFirstFormatter.string(from: releaseDate ?? Date())
+        DateFormatter.dayFirstFormatter.string(from: releaseDate ?? Date())
+    }
+    var durationText: String {
+        String(format: "%d %@", runtime, "movie.detail.duration".localized)
+    }
+    var genresText: String {
+        let firstThreeGenres = genres.prefix(3).map { $0 }
+        return firstThreeGenres.map { $0.name }.joined(separator: ", ")
     }
 }

@@ -27,6 +27,14 @@ struct MoviesView: View {
                 .padding(.top, 68)
                 .background(Color.whiteTwo)
             }
+            .overlay {
+                if viewModel.isLoading {
+                    ZStack {
+                        Color.whiteTwo
+                        ProgressView()
+                    }
+                }
+            }
         }
         .onAppear {
             Task {
@@ -47,7 +55,9 @@ struct MoviesView: View {
     private var nowPlayingMoviesView: some View {
         HStack {
             ForEach(viewModel.nowPlayingMovies, id: \.movieID) { movie in
-                MovieCardView(movie: movie, genres: viewModel.movieGenres)
+                NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movieID: movie.movieID))) {
+                    MovieCardView(movie: movie)
+                }
             }
         }
     }
@@ -57,8 +67,10 @@ struct MoviesView: View {
                 .font(.textStyle7)
                 .padding(.leading, 24)
             ForEach(viewModel.popularMovies, id: \.movieID) { movie in
-                PopularMovieCardView(movie: movie, genres: viewModel.movieGenres)
-                    .padding(.horizontal, 24)
+                NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movieID: movie.movieID))) {
+                    PopularMovieCardView(movie: movie)
+                        .padding(.horizontal, 24)
+                }
             }
         }
     }

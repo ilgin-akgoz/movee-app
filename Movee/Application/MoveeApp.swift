@@ -17,6 +17,7 @@ struct MoveeApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     // Check out https://developer.apple.com/documentation/swiftui/scenephase for more information
     private var loggingService: LoggingService
+    private var appearanceService: AppearanceService
 
     init() {
     #if PULSE
@@ -24,11 +25,12 @@ struct MoveeApp: App {
         URLSessionProxyDelegate.enableAutomaticRegistration()
     #endif
         loggingService = LoggingService()
+        appearanceService = AppearanceService()
     }
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            SplashView()
                 .onChange(of: phase, perform: manageChanges(for:))
                 .onOpenURL(perform: onOpenURL(_:))
         }

@@ -9,12 +9,27 @@
 import Foundation
 
 class MoviesViewModel: ObservableObject {
-    @Published var nowPlayingMovies: [MovieResponseModel] = []
-    @Published var popularMovies: [MovieResponseModel] = []
-    @Published var movieGenres: [MovieGenreItemResponseModel] = []
+    @Published var nowPlayingMovies: [MovieDataModel] = []
+    @Published var popularMovies: [MovieDataModel] = []
+    @Published var isLoading: Bool = true
     private let movieService: MovieServiceProtocol
     init(movieService: MovieServiceProtocol = MovieService()) {
         self.movieService = movieService
+    }
+    private func matchGenresForMovies(
+        movies: [MovieResponseModel],
+        genres: [MovieGenreItemResponseModel]
+    ) -> [MovieDataModel] {
+        return movies.map { movie in
+            let genreNames = getGenreNames(movie: movie, genres: genres)
+            return MovieDataModel(
+                movieID: movie.movieID,
+                title: movie.title,
+                genres: genreNames,
+                posterPath: movie.posterPath,
+                voteAverage: movie.voteAverage,
+                releaseDate: movie.releaseDate)
+        }
     }
     func fetchMovies() async {
         do {
@@ -22,9 +37,9 @@ class MoviesViewModel: ObservableObject {
             let popularMovies = try await fetchPopularMovies()
             let movieGenres = try await fetchMovieGenres()
             DispatchQueue.main.async {
-                self.nowPlayingMovies = nowPlayingMovies
-                self.popularMovies = popularMovies
-                self.movieGenres = movieGenres
+                self.nowPlayingMovies = self.matchGenresForMovies(movies: nowPlayingMovies, genres: movieGenres)
+                self.popularMovies = self.matchGenresForMovies(movies: popularMovies, genres: movieGenres)
+                self.isLoading = false
             }
         } catch {
             print("\(error)")
@@ -42,7 +57,7 @@ class MoviesViewModel: ObservableObject {
         let response = try await movieService.getMovieGenres()
         return response.genres
     }
-    func getGenreNames(movie: MovieResponseModel, genres: [MovieGenreItemResponseModel]) -> [String] {
+    private func getGenreNames(movie: MovieResponseModel, genres: [MovieGenreItemResponseModel]) -> [String] {
         let genreNames = genres.filter { movie.genreIDs.contains($0.genreID) }.map { $0.name }
         return genreNames
     }

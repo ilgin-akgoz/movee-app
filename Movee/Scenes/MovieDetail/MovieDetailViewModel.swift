@@ -10,7 +10,7 @@ import Foundation
 
 class MovieDetailViewModel: ObservableObject {
     @Published var movieDetails: MovieDetailResponseModel?
-    var movieID: Int
+    private let movieID: Int
     private let movieDetailService: MovieDetailServiceProtocol
     init(movieDetailService: MovieDetailServiceProtocol = MovieDetailService(),
          movieID: Int

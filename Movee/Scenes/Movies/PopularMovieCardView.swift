@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct PopularMovieCardView: View {
-    let movie: MovieResponseModel
-    let genres: [MovieGenreItemResponseModel]
+    let movie: MovieDataModel
     var body: some View {
         ZStack(alignment: .leading) {
             Rectangle()
@@ -42,11 +41,13 @@ struct PopularMovieCardView: View {
                 .font(.textStyle8)
                 .padding(.top, 10)
                 .padding(.bottom, 5)
-            Text(movieGenresText)
+                .padding(.trailing, 30)
+                .lineLimit(1)
+            Text(movie.genresText)
                 .font(.system(size: 15, weight: .regular))
-                .foregroundColor(.almostBlack)
             releaseDateAndRatingView
         }
+        .foregroundColor(.almostBlack)
     }
     private var releaseDateAndRatingView: some View {
         HStack {
@@ -55,32 +56,20 @@ struct PopularMovieCardView: View {
                 .font(.textStyle9)
             Divider()
                 .frame(width: 12, height: 1)
-                .foregroundColor(.almostBlack)
             RatingView(rating: movie.ratingText)
         }
         .padding(.bottom, 18)
-    }
-    private var movieGenresText: String {
-        return MoviesViewModel().getGenreNames(movie: movie, genres: genres).joined(separator: ", ")
     }
 }
 
 struct PopularMovieCardView_Previews: PreviewProvider {
     static var previews: some View {
-        PopularMovieCardView(movie: MovieResponseModel(movieID: 346698,
-                                                    title: "Barbie",
-                                                    overview: "",
-                                                    genreIDs: [35, 12, 14],
-                                                    posterPath:
-                                                        "/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
-                                                    backdropPath: "",
-                                                    popularity: 6058.224,
-                                                    voteAverage: 7.6,
-                                                    isAdult: false,
-                                                    releaseDate: Date()),
-                                                    genres: [MovieGenreItemResponseModel(
-                                                        genreID: 12,
-                                                        name: "Adventure")
-                                                    ])
+        PopularMovieCardView(movie: MovieDataModel(
+            movieID: 346698,
+            title: "Barbie",
+            genres: ["Adventure", "Comedy", "Fantasy"],
+            posterPath: "",
+            voteAverage: 0.0,
+            releaseDate: Date()))
     }
 }

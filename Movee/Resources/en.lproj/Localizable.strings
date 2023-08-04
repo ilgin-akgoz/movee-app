@@ -17,3 +17,7 @@
 "movies.popular.title" = "Popular";
 "movie.detail.duration" = "min";
 "series.navigationTitle" = "TV Series";
+"series.top.title" = "Top Rated";
+"series.detail.seasons" = "seasons";
+"series.detail.episodes" = "episodes";
+"series.detail.series" = "TV Series";

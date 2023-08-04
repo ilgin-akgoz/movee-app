@@ -58,7 +58,11 @@ extension TvSeriesView {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(viewModel.nowPlayingSeries, id: \.self) { tvSeries in
-                    MediaCardView(media: tvSeries)
+                    NavigationLink {
+                        TvSeriesDetailView(viewModel: .init(seriesID: tvSeries.id))
+                    } label: {
+                        MediaCardView(media: tvSeries)
+                    }
                 }
             }
         }
@@ -67,11 +71,15 @@ extension TvSeriesView {
     private var topRatedTvSeries: some View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
         return VStack(alignment: .leading) {
-            Text("movies.popular.title")
+            Text("series.top.title")
                 .font(.textStyle7)
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(viewModel.popularSeries, id: \.id) { tvSeries in
-                    MediaCompactCardView(media: tvSeries)
+                    NavigationLink {
+                        TvSeriesDetailView(viewModel: .init(seriesID: tvSeries.id))
+                    } label: {
+                        MediaCompactCardView(media: tvSeries)
+                    }
                 }
             }
         }

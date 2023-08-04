@@ -40,6 +40,7 @@ extension MediaCompactCardView {
                 Text(media.title)
                     .lineLimit(2)
                     .font(.textStyle8)
+                    .foregroundColor(.almostBlack)
                 Spacer()
             }
             Spacer()

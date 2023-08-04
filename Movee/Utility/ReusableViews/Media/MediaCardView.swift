@@ -1,23 +1,23 @@
 //
-//  MovieCardView.swift
+//  MediaCardView.swift
 //  Movee
 //
-//  Created by Akgoz, Ilgin on 26.07.2023.
+//  Created by Tekir, Hakan on 2.08.2023.
 //  Copyright © 2023 Adesso Turkey. All rights reserved.
 //
 
 import SwiftUI
 
-struct MovieCardView: View {
-    let movie: MovieDataModel
+struct MediaCardView: View {
+    let media: any MediaDataProtocol
     var body: some View {
         VStack {
-            moviePosterImage
-            movieInfo
+            mediaPosterImage
+            mediaInfo
         }
     }
-    private var moviePosterImage: some View {
-        AsyncImage(url: movie.posterURL) { image in
+    private var mediaPosterImage: some View {
+        AsyncImage(url: media.posterURL) { image in
             image
                 .resizable()
                 .frame(width: 260, height: 373)
@@ -33,15 +33,15 @@ struct MovieCardView: View {
                 .padding(.horizontal, 58)
         }
     }
-    private var movieInfo: some View {
+    private var mediaInfo: some View {
         VStack(alignment: .leading) {
-            RatingView(rating: movie.ratingText)
+            RatingView(rating: media.ratingText)
                 .padding(.top, 10)
-            Text(movie.title)
+            Text(media.title)
                 .font(.textStyle11)
                 .lineLimit(1)
                 .foregroundColor(.almostBlack)
-            Text(movie.genresText)
+            Text(media.genresText)
                 .font(.textStyle2)
                 .padding(.bottom, 20)
                 .foregroundColor(.almostBlack)
@@ -53,7 +53,7 @@ struct MovieCardView: View {
     }
 }
 
-struct MovieCardView_Previews: PreviewProvider {
+struct MediaCardView_Previews: PreviewProvider {
     static var previews: some View {
         MovieCardView(movie: MovieDataModel(
             id: 346698,

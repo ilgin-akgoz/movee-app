@@ -16,3 +16,4 @@
 "movies.navigationTitle" = "Movies";
 "movies.popular.title" = "Popular";
 "movie.detail.duration" = "min";
+"series.navigationTitle" = "TV Series";

@@ -54,8 +54,8 @@ struct MoviesView: View {
     }
     private var nowPlayingMoviesView: some View {
         HStack {
-            ForEach(viewModel.nowPlayingMovies, id: \.movieID) { movie in
-                NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movieID: movie.movieID))) {
+            ForEach(viewModel.nowPlayingMovies, id: \.id) { movie in
+                NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movieID: movie.id))) {
                     MovieCardView(movie: movie)
                 }
             }
@@ -66,8 +66,8 @@ struct MoviesView: View {
             Text("movies.popular.title")
                 .font(.textStyle7)
                 .padding(.leading, 24)
-            ForEach(viewModel.popularMovies, id: \.movieID) { movie in
-                NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movieID: movie.movieID))) {
+            ForEach(viewModel.popularMovies, id: \.id) { movie in
+                NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movieID: movie.id))) {
                     PopularMovieCardView(movie: movie)
                         .padding(.horizontal, 24)
                 }

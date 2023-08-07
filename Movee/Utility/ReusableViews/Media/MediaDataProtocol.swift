@@ -1,20 +1,23 @@
 //
-//  MovieDataModel.swift
+//  MediaDataProtocol.swift
 //  Movee
 //
-//  Created by Akgoz, Ilgin on 29.07.2023.
+//  Created by Tekir, Hakan on 2.08.2023.
 //  Copyright © 2023 Adesso Turkey. All rights reserved.
 //
 
 import Foundation
 
-struct MovieDataModel: MediaDataProtocol {
-    let id: Int
-    let title: String
-    let genres: [String]
-    let posterPath: String?
-    let voteAverage: Double
-    let releaseDate: Date?
+protocol MediaDataProtocol: Identifiable {
+    var id: Int { get }
+    var title: String { get }
+    var genres: [String] { get }
+    var posterPath: String? { get }
+    var voteAverage: Double { get }
+    var releaseDate: Date? { get }
+}
+
+extension MediaDataProtocol {
     var posterURL: URL {
         URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
     }

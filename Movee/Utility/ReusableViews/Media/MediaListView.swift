@@ -1,15 +1,15 @@
 //
-//  PopularMovieCardView.swift
+//  MediaListView.swift
 //  Movee
 //
-//  Created by Akgoz, Ilgin on 26.07.2023.
+//  Created by Hakan Tekir on 3.08.2023.
 //  Copyright © 2023 Adesso Turkey. All rights reserved.
 //
 
 import SwiftUI
 
-struct PopularMovieCardView: View {
-    let movie: MovieDataModel
+struct MediaListView: View {
+    let media: any MediaDataProtocol
     var body: some View {
         ZStack(alignment: .leading) {
             Rectangle()
@@ -17,13 +17,16 @@ struct PopularMovieCardView: View {
                 .foregroundColor(.white)
                 .cornerRadius(8)
             HStack {
-                moviePosterImage
-                movieInfo
+                mediaPosterImage
+                mediaInfo
             }
         }
     }
-    private var moviePosterImage: some View {
-        AsyncImage(url: movie.posterURL) { image in
+}
+
+extension MediaListView {
+    private var mediaPosterImage: some View {
+        AsyncImage(url: media.posterURL) { image in
             image
                 .resizable()
                 .frame(width: 70, height: 100)
@@ -35,36 +38,38 @@ struct PopularMovieCardView: View {
                 .roundedCorner(8, corners: [.topLeft, .bottomLeft])
         }
     }
-    private var movieInfo: some View {
+
+    private var mediaInfo: some View {
         VStack(alignment: .leading) {
-            Text(movie.title)
+            Text(media.title)
                 .font(.textStyle8)
                 .padding(.top, 10)
                 .padding(.bottom, 5)
                 .padding(.trailing, 30)
                 .lineLimit(1)
-            Text(movie.genresText)
+            Text(media.genresText)
                 .font(.system(size: 15, weight: .regular))
             releaseDateAndRatingView
         }
         .foregroundColor(.almostBlack)
     }
+
     private var releaseDateAndRatingView: some View {
         HStack {
             Image("calendar")
-            Text(movie.formattedReleaseDate)
+            Text(media.formattedReleaseDate)
                 .font(.textStyle9)
             Divider()
                 .frame(width: 12, height: 1)
-            RatingView(rating: movie.ratingText)
+            RatingView(rating: media.ratingText)
         }
         .padding(.bottom, 18)
     }
 }
 
-struct PopularMovieCardView_Previews: PreviewProvider {
+struct MediaListView_Previews: PreviewProvider {
     static var previews: some View {
-        PopularMovieCardView(movie: MovieDataModel(
+        MediaListView(media: MovieDataModel(
             id: 346698,
             title: "Barbie",
             genres: ["Adventure", "Comedy", "Fantasy"],

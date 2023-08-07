@@ -16,3 +16,8 @@
 "movies.navigationTitle" = "Filmler";
 "movies.popular.title" = "Popüler";
 "movie.detail.duration" = "dk";
+"series.navigationTitle" = "Diziler";
+"series.top.title" = "En Çok Oy Alan";
+"series.detail.seasons" = "sezon";
+"series.detail.episodes" = "bölüm";
+"series.detail.series" = "Dizi";

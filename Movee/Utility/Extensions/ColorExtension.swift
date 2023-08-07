@@ -10,6 +10,7 @@ import SwiftUI
 
 extension Color {
     static var almostBlack: Color { Color("almostBlack") }
+    static var almostGray: Color { Color("almostGray") }
     static var deepSkyBlue: Color { Color("deepSkyBlue") }
     static var electricBlue: Color { Color("electricBlue") }
     static var lightGreyBlue: Color { Color("lightGreyBlue") }

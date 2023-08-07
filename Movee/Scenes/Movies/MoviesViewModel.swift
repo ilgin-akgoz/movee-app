@@ -23,7 +23,7 @@ class MoviesViewModel: ObservableObject {
         return movies.map { movie in
             let genreNames = getGenreNames(movie: movie, genres: genres)
             return MovieDataModel(
-                movieID: movie.movieID,
+                id: movie.movieID,
                 title: movie.title,
                 genres: genreNames,
                 posterPath: movie.posterPath,

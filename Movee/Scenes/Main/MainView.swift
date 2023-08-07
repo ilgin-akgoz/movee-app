@@ -9,14 +9,32 @@
 import SwiftUI
 
 struct MainView: View {
+    @State var selectedTab: MainTabs = .movies
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             MoviesView()
                 .tabItem {
-                    Image("iconTabbarMovie")
-                }
+                    if selectedTab == .movies {
+                        Image("iconTabbarMovieSelected")
+                    } else {
+                        Image("iconTabbarMovie")
+                    }
+                }.tag(MainTabs.movies)
+            TvSeriesView()
+                .tabItem {
+                    if selectedTab == .tvSeries {
+                        Image("iconTabbarTvSeriesSelected")
+                    } else {
+                        Image("iconTabbarTvSeries")
+                    }
+                }.tag(MainTabs.tvSeries)
         }
     }
+}
+
+enum MainTabs {
+    case movies
+    case tvSeries
 }
 
 struct MainView_Previews: PreviewProvider {

@@ -22,7 +22,7 @@ struct MovieDataModel: MediaDataProtocol {
         String(format: "%.1f", voteAverage)
     }
     var formattedReleaseDate: String {
-        DateFormatter.dayFirstFormatter.string(from: releaseDate ?? Date())
+        DateFormatter.localizedFormatter.string(from: releaseDate ?? Date())
     }
     var genresText: String {
         let firstThreeGenres = genres.prefix(3).map { $0 }

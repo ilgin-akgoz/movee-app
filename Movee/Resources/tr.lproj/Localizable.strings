@@ -21,3 +21,7 @@
 "series.detail.seasons" = "sezon";
 "series.detail.episodes" = "bölüm";
 "series.detail.series" = "Dizi";
+"series.detail.creators" = "Yaratanlar: ";
+"series.detail.cast" = "Oyuncular";
+"person.detail.born" = "Doğum tarihi ve yeri: ";
+"person.detail.in" = "-";

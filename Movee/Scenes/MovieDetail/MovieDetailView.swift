@@ -30,6 +30,7 @@ struct MovieDetailView: View {
                     .padding(.bottom, 10)
                 Text(viewModel.movieDetails?.overview ?? "Overview")
                     .padding(.horizontal, 24)
+                cast
                 Spacer()
             }
         }
@@ -54,11 +55,11 @@ struct MovieDetailView: View {
         AsyncImage(url: viewModel.movieDetails?.posterURL) { image in
             image
                 .resizable()
-                .frame(width: 400, height: 400)
+                .frame(height: 400)
         } placeholder: {
             Image("dummy_image")
                 .resizable()
-                .frame(width: 400, height: 400)
+                .frame(height: 400)
         }
     }
     private var titleAndGenres: some View {
@@ -89,6 +90,26 @@ struct MovieDetailView: View {
         .padding(.leading, 24)
         .font(.system(size: 15, weight: .regular))
         .foregroundColor(.almostBlack)
+    }
+    private var cast: some View {
+        VStack(alignment: .leading) {
+            Text("series.detail.cast")
+                .font(.textStyle11)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    if let cast = viewModel.cast {
+                        ForEach(cast, id: \.self) { cast in
+                            NavigationLink {
+                                PersonDetailView(viewModel: PersonDetailViewModel(personID: cast.id ?? 0))
+                            } label: {
+                                CastView(cast: cast)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, 24)
     }
 }
 

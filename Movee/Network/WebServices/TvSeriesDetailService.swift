@@ -9,7 +9,8 @@
 import Foundation
 
 protocol TvSeriesDetailServiceProtocol {
-    func getMovieDetails(for seriesID: Int) async throws -> TvSeriesDetailResponseModel
+    func getTvSeriesDetails(for seriesID: Int) async throws -> TvSeriesDetailResponseModel
+    func getCast(of seriesID: Int) async throws -> CastResponseModel
 }
 
 final class TvSeriesDetailService: TvSeriesDetailServiceProtocol, BaseServiceProtocol {
@@ -20,8 +21,12 @@ final class TvSeriesDetailService: TvSeriesDetailServiceProtocol, BaseServicePro
         self.networkLoader = networkLoader
     }
 
-    func getMovieDetails(for seriesID: Int) async throws -> TvSeriesDetailResponseModel {
+    func getTvSeriesDetails(for seriesID: Int) async throws -> TvSeriesDetailResponseModel {
         try await request(with: RequestObject(url: build(endpoint: .seriesDetail(seriesID: seriesID))),
                 responseModel: TvSeriesDetailResponseModel.self)
+    }
+    func getCast(of seriesID: Int) async throws -> CastResponseModel {
+        try await request(with: RequestObject(url: build(endpoint: .cast(seriesID: seriesID))),
+                          responseModel: CastResponseModel.self)
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 
 protocol MovieDetailServiceProtocol {
     func getMovieDetails(for movieID: Int) async throws -> MovieDetailResponseModel
+    func getCast(of movieID: Int) async throws -> CastResponseModel
 }
 
 final class MovieDetailService: MovieDetailServiceProtocol, BaseServiceProtocol {
@@ -21,5 +22,9 @@ final class MovieDetailService: MovieDetailServiceProtocol, BaseServiceProtocol 
     func getMovieDetails(for movieID: Int) async throws -> MovieDetailResponseModel {
         try await request(with: RequestObject(url: build(endpoint: .movieDetail(movieID: movieID))),
                 responseModel: MovieDetailResponseModel.self)
+    }
+    func getCast(of movieID: Int) async throws -> CastResponseModel {
+        try await request(with: RequestObject(url: build(endpoint: .cast(movieID: movieID))),
+                          responseModel: CastResponseModel.self)
     }
 }

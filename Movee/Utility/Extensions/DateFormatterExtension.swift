@@ -9,9 +9,15 @@
 import Foundation
 
 extension DateFormatter {
-    static let dayFirstFormatter: DateFormatter = {
+    static let localizedFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YYYY"
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.dateStyle = .medium
+        return dateFormatter
+    }()
+    static let onlyYearFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
         return dateFormatter
     }()
 }

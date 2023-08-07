@@ -21,3 +21,7 @@
 "series.detail.seasons" = "seasons";
 "series.detail.episodes" = "episodes";
 "series.detail.series" = "TV Series";
+"series.detail.creators" = "Creators: ";
+"series.detail.cast" = "Cast";
+"person.detail.born" = "Born: ";
+"person.detail.in" = "in";

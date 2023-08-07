@@ -45,7 +45,7 @@ struct MoviesView: View {
     private var vibrantBlueView: some View {
         VStack {
             Rectangle()
-                .frame(width: 400, height: 250)
+                .frame(height: 250)
                 .foregroundColor(Color.vibrantBlue)
                 .ignoresSafeArea()
                 .offset(y: -220)

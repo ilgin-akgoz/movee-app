@@ -12,7 +12,7 @@ struct CastView: View {
     let cast: ActorResponseModel
     var body: some View {
         VStack {
-            AsyncImage(url: cast.profileURL) { image in
+            AsyncImage(url: ImageManager.instance.buildURL(cast.profilePath ?? "")) { image in
                 image
                     .resizable()
                     .clipShape(Circle())

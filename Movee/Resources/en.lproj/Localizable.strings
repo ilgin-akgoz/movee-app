@@ -25,3 +25,5 @@
 "series.detail.cast" = "Cast";
 "person.detail.born" = "Born: ";
 "person.detail.in" = "in";
+"person.detail.seeLess" = "See less";
+"person.detail.seeFullBio" = "See full bio";

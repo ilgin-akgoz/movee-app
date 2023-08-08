@@ -15,9 +15,6 @@ struct MovieDataModel: MediaDataProtocol {
     let posterPath: String?
     let voteAverage: Double
     let releaseDate: Date?
-    var posterURL: URL {
-        URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
-    }
     var ratingText: String {
         String(format: "%.1f", voteAverage)
     }

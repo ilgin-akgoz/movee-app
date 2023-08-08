@@ -12,7 +12,7 @@ struct PersonDetailResponseModel: Decodable {
     let id: Int?
     let name: String?
     let birthday: Date?
-    let biography: String?
+    let biography: String
     let placeOfBirth: String?
     let profilePath: String?
     enum CodingKeys: String, CodingKey {
@@ -22,9 +22,6 @@ struct PersonDetailResponseModel: Decodable {
         case biography
         case placeOfBirth = "place_of_birth"
         case profilePath = "profile_path"
-    }
-    var profileURL: URL {
-        URL(string: "https://image.tmdb.org/t/p/w500\(profilePath ?? "")")!
     }
     var bornText: String {
         let birthday = DateFormatter.localizedFormatter.string(from: birthday ?? Date())

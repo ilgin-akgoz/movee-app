@@ -36,9 +36,6 @@ struct TvSeriesDetailResponseModel: Decodable {
         case numberOfEpisodes = "number_of_episodes"
         case creators = "created_by"
     }
-    var posterURL: URL {
-        URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
-    }
     var ratingText: String {
         String(format: "%.1f", voteAverage)
     }

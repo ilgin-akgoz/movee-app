@@ -22,10 +22,13 @@ struct PersonDetailView: View {
                 Text(viewModel.personDetails?.name ?? "")
                     .font(.textStyle11)
                     .padding(.leading, 24)
-                Text(viewModel.personDetails?.biography ?? "")
-                    .lineLimit(isShowingFullBio ? nil : 4)
-                    .padding(.horizontal, 24)
-                toggleBioLengthButton
+                if !(viewModel.personDetails?.biography.isEmpty ?? true) {
+                    Text(viewModel.personDetails?.biography ?? "")
+                        .lineSpacing(7)
+                        .lineLimit(isShowingFullBio ? nil : 4)
+                        .padding(.horizontal, 24)
+                    toggleBioLengthButton
+                }
                 HStack {
                     Text("person.detail.born")
                         .font(.system(size: 17, weight: .bold))
@@ -52,7 +55,7 @@ struct PersonDetailView: View {
         }
     }
     private var personImage: some View {
-        AsyncImage(url: viewModel.personDetails?.profileURL) { image in
+        AsyncImage(url: ImageManager.instance.buildURL(viewModel.personDetails?.profilePath ?? "")) { image in
             image
                 .resizable()
                 .frame(height: 400)
@@ -67,7 +70,7 @@ struct PersonDetailView: View {
             isShowingFullBio.toggle()
         } label: {
             HStack {
-                Text(isShowingFullBio ? "See less" : "See full bio")
+                Text(isShowingFullBio ? "person.detail.seeLess" : "person.detail.seeFullBio")
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundColor(.vibrantBlue)
                     .padding(.leading, 24)

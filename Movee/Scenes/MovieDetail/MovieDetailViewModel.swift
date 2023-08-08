@@ -11,7 +11,7 @@ import Foundation
 @MainActor
 class MovieDetailViewModel: ObservableObject {
     @Published var movieDetails: MovieDetailResponseModel?
-    @Published var cast: [ActorResponseModel]?
+    @Published var cast: [ActorResponseModel] = []
     private let movieID: Int
     private let movieDetailService: MovieDetailServiceProtocol
     init(movieDetailService: MovieDetailServiceProtocol = MovieDetailService(),

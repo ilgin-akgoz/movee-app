@@ -18,9 +18,6 @@ protocol MediaDataProtocol: Identifiable {
 }
 
 extension MediaDataProtocol {
-    var posterURL: URL {
-        URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
-    }
     var ratingText: String {
         String(format: "%.1f", voteAverage)
     }

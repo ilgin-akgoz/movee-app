@@ -11,7 +11,7 @@ import Foundation
 @MainActor
 class TvSeriesDetailViewModel: ObservableObject {
     @Published var seriesDetails: TvSeriesDetailResponseModel?
-    @Published var cast: [ActorResponseModel]?
+    @Published var cast: [ActorResponseModel] = []
     private let seriesID: Int
     private let seriesDetailService: TvSeriesDetailServiceProtocol
     init(seriesDetailService: TvSeriesDetailServiceProtocol = TvSeriesDetailService(),

@@ -23,7 +23,7 @@ struct PopularMovieCardView: View {
         }
     }
     private var moviePosterImage: some View {
-        AsyncImage(url: movie.posterURL) { image in
+        AsyncImage(url: ImageManager.instance.buildURL(movie.posterPath ?? "")) { image in
             image
                 .resizable()
                 .frame(width: 70, height: 100)

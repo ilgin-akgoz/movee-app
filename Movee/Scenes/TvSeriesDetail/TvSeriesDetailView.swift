@@ -26,8 +26,11 @@ struct TvSeriesDetailView: View {
                 Divider()
                     .foregroundColor(.almostBlack)
                     .padding(.horizontal, 24)
-                Text(viewModel.seriesDetails?.overview ?? "Overview")
-                    .padding(.horizontal, 24)
+                if !(viewModel.seriesDetails?.overview.isEmpty ?? true) {
+                    Text(viewModel.seriesDetails?.overview ?? "")
+                        .lineSpacing(7)
+                        .padding(.horizontal, 24)
+                }
                 episodeInfos
                 creators
                 cast
@@ -52,7 +55,7 @@ struct TvSeriesDetailView: View {
         }
     }
     private var moviePosterImage: some View {
-        AsyncImage(url: viewModel.seriesDetails?.posterURL) { image in
+        AsyncImage(url: ImageManager.instance.buildURL(viewModel.seriesDetails?.posterPath ?? "")) { image in
             image
                 .resizable()
                 .frame(height: 400)
@@ -119,7 +122,7 @@ struct TvSeriesDetailView: View {
     }
     private var creators: some View {
         HStack {
-            Text("series.detail.creators")
+            Text(viewModel.seriesDetails?.creatorsText.isEmpty ?? false ? "" : "series.detail.creators")
                 .foregroundColor(.almostBlack)
             Text(viewModel.seriesDetails?.creatorsText ?? "N/A")
                 .font(.system(size: 17, weight: .semibold))
@@ -129,17 +132,15 @@ struct TvSeriesDetailView: View {
     }
     private var cast: some View {
         VStack(alignment: .leading) {
-            Text("series.detail.cast")
+            Text(viewModel.cast.isEmpty ? "" : "series.detail.cast")
                 .font(.textStyle11)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
-                    if let cast = viewModel.cast {
-                        ForEach(cast, id: \.self) { cast in
-                            NavigationLink {
-                                PersonDetailView(viewModel: PersonDetailViewModel(personID: cast.id ?? 0))
-                            } label: {
-                                CastView(cast: cast)
-                            }
+                    ForEach(viewModel.cast, id: \.self) { cast in
+                        NavigationLink {
+                            PersonDetailView(viewModel: PersonDetailViewModel(personID: cast.id ?? 0))
+                        } label: {
+                            CastView(cast: cast)
                         }
                     }
                 }

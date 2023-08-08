@@ -17,7 +17,4 @@ struct ActorResponseModel: Decodable, Hashable {
         case name
         case profilePath = "profile_path"
     }
-    var profileURL: URL {
-        URL(string: "https://image.tmdb.org/t/p/w500\(profilePath ?? "")")!
-    }
 }

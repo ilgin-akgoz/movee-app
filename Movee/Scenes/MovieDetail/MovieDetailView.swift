@@ -28,8 +28,11 @@ struct MovieDetailView: View {
                     .foregroundColor(.almostBlack)
                     .padding(.horizontal, 24)
                     .padding(.bottom, 10)
-                Text(viewModel.movieDetails?.overview ?? "Overview")
-                    .padding(.horizontal, 24)
+                if !(viewModel.movieDetails?.overview.isEmpty ?? true) {
+                    Text(viewModel.movieDetails?.overview ?? "")
+                        .lineSpacing(7)
+                        .padding(.horizontal, 24)
+                }
                 cast
                 Spacer()
             }
@@ -52,7 +55,7 @@ struct MovieDetailView: View {
         }
     }
     private var moviePosterImage: some View {
-        AsyncImage(url: viewModel.movieDetails?.posterURL) { image in
+        AsyncImage(url: ImageManager.instance.buildURL(viewModel.movieDetails?.posterPath ?? "")) { image in
             image
                 .resizable()
                 .frame(height: 400)
@@ -93,17 +96,15 @@ struct MovieDetailView: View {
     }
     private var cast: some View {
         VStack(alignment: .leading) {
-            Text("series.detail.cast")
+            Text(viewModel.cast.isEmpty ? "" : "series.detail.cast")
                 .font(.textStyle11)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
-                    if let cast = viewModel.cast {
-                        ForEach(cast, id: \.self) { cast in
-                            NavigationLink {
-                                PersonDetailView(viewModel: PersonDetailViewModel(personID: cast.id ?? 0))
-                            } label: {
-                                CastView(cast: cast)
-                            }
+                    ForEach(viewModel.cast, id: \.self) { cast in
+                        NavigationLink {
+                            PersonDetailView(viewModel: PersonDetailViewModel(personID: cast.id ?? 0))
+                        } label: {
+                            CastView(cast: cast)
                         }
                     }
                 }

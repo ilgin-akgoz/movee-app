@@ -27,9 +27,6 @@ struct MovieDetailResponseModel: Decodable {
         case overview
         case posterPath = "poster_path"
     }
-    var posterURL: URL {
-        URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
-    }
     var ratingText: String {
         String(format: "%.1f", voteAverage)
     }

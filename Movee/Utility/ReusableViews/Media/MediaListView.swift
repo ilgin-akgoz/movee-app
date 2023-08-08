@@ -26,7 +26,7 @@ struct MediaListView: View {
 
 extension MediaListView {
     private var mediaPosterImage: some View {
-        AsyncImage(url: media.posterURL) { image in
+        AsyncImage(url: ImageManager.instance.buildURL(media.posterPath ?? "")) { image in
             image
                 .resizable()
                 .frame(width: 70, height: 100)

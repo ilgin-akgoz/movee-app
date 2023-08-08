@@ -28,8 +28,12 @@ struct MovieDetailView: View {
                     .foregroundColor(.almostBlack)
                     .padding(.horizontal, 24)
                     .padding(.bottom, 10)
-                Text(viewModel.movieDetails?.overview ?? "Overview")
-                    .padding(.horizontal, 24)
+                if !(viewModel.movieDetails?.overview.isEmpty ?? true) {
+                    Text(viewModel.movieDetails?.overview ?? "")
+                        .lineSpacing(7)
+                        .padding(.horizontal, 24)
+                }
+                cast
                 Spacer()
             }
         }
@@ -51,14 +55,14 @@ struct MovieDetailView: View {
         }
     }
     private var moviePosterImage: some View {
-        AsyncImage(url: viewModel.movieDetails?.posterURL) { image in
+        AsyncImage(url: ImageManager.instance.buildURL(viewModel.movieDetails?.posterPath ?? "")) { image in
             image
                 .resizable()
-                .frame(width: 400, height: 400)
+                .frame(height: 400)
         } placeholder: {
             Image("dummy_image")
                 .resizable()
-                .frame(width: 400, height: 400)
+                .frame(height: 400)
         }
     }
     private var titleAndGenres: some View {
@@ -89,6 +93,24 @@ struct MovieDetailView: View {
         .padding(.leading, 24)
         .font(.system(size: 15, weight: .regular))
         .foregroundColor(.almostBlack)
+    }
+    private var cast: some View {
+        VStack(alignment: .leading) {
+            Text(viewModel.cast.isEmpty ? "" : "series.detail.cast")
+                .font(.textStyle11)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    ForEach(viewModel.cast, id: \.self) { cast in
+                        NavigationLink {
+                            PersonDetailView(viewModel: PersonDetailViewModel(personID: cast.id ?? 0))
+                        } label: {
+                            CastView(cast: cast)
+                        }
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, 24)
     }
 }
 

@@ -22,20 +22,11 @@ enum TvSeriesEndpoint: TargetEndpointProtocol {
     var path: String {
         switch self {
         case .popularSeries:
-            return BaseEndpoint.base.path +
-            Constants.popularSeries +
-            BaseEndpoint.apiKey.path +
-            LocaleEndpoint.deviceLanguage.path
+            return BaseEndpoint.base.path + Constants.popularSeries + BaseEndpoint.apiKey.path
         case .topRatedSeries:
-            return BaseEndpoint.base.path +
-            Constants.topRatedSeries +
-            BaseEndpoint.apiKey.path +
-            LocaleEndpoint.deviceLanguage.path
+            return BaseEndpoint.base.path + Constants.topRatedSeries + BaseEndpoint.apiKey.path
         case .seriesGenres:
-            return BaseEndpoint.base.path +
-            Constants.seriesGenres +
-            BaseEndpoint.apiKey.path +
-            LocaleEndpoint.deviceLanguage.path
+            return BaseEndpoint.base.path + Constants.seriesGenres + BaseEndpoint.apiKey.path
         }
     }
 }

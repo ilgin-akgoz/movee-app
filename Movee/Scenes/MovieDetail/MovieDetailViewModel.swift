@@ -8,8 +8,10 @@
 
 import Foundation
 
+@MainActor
 class MovieDetailViewModel: ObservableObject {
     @Published var movieDetails: MovieDetailResponseModel?
+    @Published var cast: [ActorResponseModel] = []
     private let movieID: Int
     private let movieDetailService: MovieDetailServiceProtocol
     init(movieDetailService: MovieDetailServiceProtocol = MovieDetailService(),
@@ -21,14 +23,18 @@ class MovieDetailViewModel: ObservableObject {
     func fetchMovie() async {
         do {
             let movieDetails = try await fetchMovieDetails()
-            DispatchQueue.main.async {
-                self.movieDetails = movieDetails
-            }
+            let cast = try await fetchCast()
+            self.movieDetails = movieDetails
+            self.cast = cast
         } catch {
             print("\(error)")
         }
     }
     private func fetchMovieDetails() async throws -> MovieDetailResponseModel {
         try await movieDetailService.getMovieDetails(for: movieID)
+    }
+    private func fetchCast() async throws -> [ActorResponseModel] {
+        let response = try await movieDetailService.getCast(of: movieID)
+        return response.cast
     }
 }

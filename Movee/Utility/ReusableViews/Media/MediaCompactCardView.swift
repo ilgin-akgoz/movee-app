@@ -16,14 +16,14 @@ struct MediaCompactCardView: View {
             mediaInfo
         }
         .frame(width: 153)
-        .background(Color.almostBlack.opacity(0.1))
+        .background(Color.white)
         .cornerRadius(8)
     }
 }
 
 extension MediaCompactCardView {
     private var mediaPosterImage: some View {
-        AsyncImage(url: media.posterURL) { image in
+        AsyncImage(url: ImageManager.instance.buildURL(media.posterPath ?? "")) { image in
             image
                 .resizable()
         } placeholder: {
@@ -38,7 +38,7 @@ extension MediaCompactCardView {
             Spacer()
             HStack {
                 Text(media.title)
-                    .lineLimit(2)
+                    .lineLimit(1)
                     .font(.textStyle8)
                     .foregroundColor(.almostBlack)
                 Spacer()

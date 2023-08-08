@@ -25,10 +25,15 @@ struct TvSeriesDetailView: View {
                 durationAndReleaseDate
                 Divider()
                     .foregroundColor(.almostBlack)
-                    .padding(.horizontal, 24)                    
-                Text(viewModel.seriesDetails?.overview ?? "Overview")
                     .padding(.horizontal, 24)
+                if !(viewModel.seriesDetails?.overview.isEmpty ?? true) {
+                    Text(viewModel.seriesDetails?.overview ?? "")
+                        .lineSpacing(7)
+                        .padding(.horizontal, 24)
+                }
                 episodeInfos
+                creators
+                cast
                 Spacer()
             }
         }
@@ -45,19 +50,19 @@ struct TvSeriesDetailView: View {
         }
         .onAppear {
             Task {
-                await viewModel.fetchMovie()
+                await viewModel.fetchDetails()
             }
         }
     }
     private var moviePosterImage: some View {
-        AsyncImage(url: viewModel.seriesDetails?.posterURL) { image in
+        AsyncImage(url: ImageManager.instance.buildURL(viewModel.seriesDetails?.posterPath ?? "")) { image in
             image
                 .resizable()
-                .frame(width: 400, height: 400)
+                .frame(height: 400)
         } placeholder: {
             Image("dummy_image")
                 .resizable()
-                .frame(width: 400, height: 400)
+                .frame(height: 400)
         }
     }
     private var titleAndGenres: some View {
@@ -82,7 +87,7 @@ struct TvSeriesDetailView: View {
                 .frame(width: 12, height: 1)
                 .foregroundColor(.almostBlack)
             Image("calendar")
-            Text(viewModel.seriesDetails?.yearRangeText ?? "")
+            Text(viewModel.seriesDetails?.firstAndLastAirDateText ?? "")
         }
         .padding(.top, -24)
         .padding(.leading, 24)
@@ -114,6 +119,34 @@ struct TvSeriesDetailView: View {
             .cornerRadius(12)
             .padding(.leading, 12)
         }
+    }
+    private var creators: some View {
+        HStack {
+            Text(viewModel.seriesDetails?.creatorsText.isEmpty ?? false ? "" : "series.detail.creators")
+                .foregroundColor(.almostBlack)
+            Text(viewModel.seriesDetails?.creatorsText ?? "N/A")
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundColor(.vibrantBlue)
+        }
+        .padding(.leading, 24)
+    }
+    private var cast: some View {
+        VStack(alignment: .leading) {
+            Text(viewModel.cast.isEmpty ? "" : "series.detail.cast")
+                .font(.textStyle11)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    ForEach(viewModel.cast, id: \.self) { cast in
+                        NavigationLink {
+                            PersonDetailView(viewModel: PersonDetailViewModel(personID: cast.id ?? 0))
+                        } label: {
+                            CastView(cast: cast)
+                        }
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, 24)
     }
 }
 

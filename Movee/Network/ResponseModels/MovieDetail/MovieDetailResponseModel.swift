@@ -27,14 +27,11 @@ struct MovieDetailResponseModel: Decodable {
         case overview
         case posterPath = "poster_path"
     }
-    var posterURL: URL {
-        URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
-    }
     var ratingText: String {
         String(format: "%.1f", voteAverage)
     }
     var formattedReleaseDate: String {
-        DateFormatter.dayFirstFormatter.string(from: releaseDate ?? Date())
+        DateFormatter.localizedFormatter.string(from: releaseDate ?? Date())
     }
     var durationText: String {
         String(format: "%d %@", runtime, "movie.detail.duration".localized)

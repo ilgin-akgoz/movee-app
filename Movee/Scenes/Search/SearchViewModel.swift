@@ -28,17 +28,17 @@ class SearchViewModel: ObservableObject {
                 title = result.title ?? ""
                 imagePath = result.posterPath ?? ""
                 mediaTypeIcon = "movieIcon"
-                mediaTypeText = "Movie"
+                mediaTypeText = "search.mediaType.movie"
             case .tvSeries:
                 title = result.title ?? ""
                 imagePath = result.posterPath ?? ""
                 mediaTypeIcon = "tvIcon"
-                mediaTypeText = "TV Series"
+                mediaTypeText = "search.mediaType.tv"
             case .person:
                 title = result.name ?? ""
                 imagePath = result.profilePath ?? ""
                 mediaTypeIcon = "personIcon"
-                mediaTypeText = "Actor"
+                mediaTypeText = "search.mediaType.actor"
             }
             return SearchDataModel(
                 id: result.id ?? 0,

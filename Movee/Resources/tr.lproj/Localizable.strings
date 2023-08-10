@@ -31,6 +31,6 @@
 "search.bar.placeholder" = "Film veya Dizi";
 "search.bar.cancel" = "Vazgeç";
 "search.noSearchResult" = "arama sonucu bulunamadı";
-"Movie" = "Film";
-"TV Series" = "Dizi";
-"Actor" = "Oyuncu";
+"search.mediaType.movie" = "Film";
+"search.mediaType.tv" = "Dizi";
+"search.mediaType.actor" = "Oyuncu";

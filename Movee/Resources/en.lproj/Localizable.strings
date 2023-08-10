@@ -31,6 +31,6 @@
 "search.bar.placeholder" = "Movies or Series";
 "search.bar.cancel" = "Cancel";
 "search.noSearchResult" = "your search didn't have any results";
-"Movie" = "Movie";
-"TV Series" = "TV Series";
-"Actor" = "Actor";
+"search.mediaType.movie" = "Movie";
+"search.mediaType.tv" = "TV Series";
+"search.mediaType.actor" = "Actor";

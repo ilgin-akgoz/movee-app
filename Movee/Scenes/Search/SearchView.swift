@@ -17,31 +17,14 @@ struct SearchView: View {
                 ScrollView {
                     VStack {
                         ZStack {
-                            vibrantBlueView
+                            VibrantBlueView()
+                                .offset(y: -145)
                             SearchBar(searchQuery: $viewModel.searchQuery, proxy: proxy)
                         }
                         if !viewModel.searchResults.isEmpty {
-                            VStack(spacing: 20) {
-                                ForEach(viewModel.searchResults, id: \.id) { result in
-                                    if !viewModel.searchQuery.isEmpty {
-                                        NavigationLink {
-                                            destinationView(for: result)
-                                        } label: {
-                                            SearchMediaCard(media: result)
-                                                .frame(width: proxy.size.width * 0.8)
-                                        }
-                                    }
-                                }
-                            }
-                            .offset(y: -180)
+                            searchResultsView(proxy: proxy)
                         } else if !viewModel.searchQuery.isEmpty {
-                            VStack {
-                                Image("noSearchResult")
-                                Text("search.noSearchResult")
-                                    .foregroundColor(.vibrantBlue)
-                                    .font(.system(size: 18, weight: .bold))
-                                    .frame(width: proxy.size.width * 0.5)
-                            }
+                            noSearchResultView(proxy: proxy)
                         }
                     }
                 }
@@ -59,14 +42,20 @@ struct SearchView: View {
             }
         }
     }
-    private var vibrantBlueView: some View {
-        VStack {
-            Rectangle()
-                .frame(height: 250)
-                .foregroundColor(Color.vibrantBlue)
-                .ignoresSafeArea()
-                .offset(y: -145)
+    private func searchResultsView(proxy: GeometryProxy) -> some View {
+        VStack(spacing: 20) {
+            ForEach(viewModel.searchResults, id: \.id) { result in
+                if !viewModel.searchQuery.isEmpty {
+                    NavigationLink {
+                        destinationView(for: result)
+                    } label: {
+                        SearchMediaCard(media: result)
+                            .frame(width: proxy.size.width * 0.8)
+                    }
+                }
+            }
         }
+        .offset(y: -180)
     }
     @ViewBuilder
     private func destinationView(for card: SearchDataModel) -> some View {
@@ -77,6 +66,15 @@ struct SearchView: View {
             TvSeriesDetailView(viewModel: TvSeriesDetailViewModel(seriesID: card.id))
         case .person:
             PersonDetailView(viewModel: PersonDetailViewModel(personID: card.id))
+        }
+    }
+    private func noSearchResultView(proxy: GeometryProxy) -> some View {
+        VStack {
+            Image("noSearchResult")
+            Text("search.noSearchResult")
+                .foregroundColor(.vibrantBlue)
+                .font(.system(size: 18, weight: .bold))
+                .frame(width: proxy.size.width * 0.5)
         }
     }
 }

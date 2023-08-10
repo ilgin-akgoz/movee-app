@@ -15,7 +15,11 @@ struct TvSeriesView: View {
             GeometryReader { proxy in
                 ScrollView(showsIndicators: false) {
                     ZStack {
-                        vibrantBlueView
+                        VStack {
+                            VibrantBlueView()
+                                .offset(y: -220)
+                            Spacer()
+                        }
                         VStack {
                             nowPlayingTvSeries(proxy: proxy)
                             Divider()
@@ -48,17 +52,6 @@ struct TvSeriesView: View {
 }
 
 extension TvSeriesView {
-    private var vibrantBlueView: some View {
-        VStack {
-            Rectangle()
-                .frame(height: 250)
-                .foregroundColor(Color.vibrantBlue)
-                .ignoresSafeArea()
-                .offset(y: -220)
-            Spacer()
-        }
-    }
-
     private func nowPlayingTvSeries(proxy: GeometryProxy) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
@@ -72,7 +65,6 @@ extension TvSeriesView {
             }
         }
     }
-
     private var topRatedTvSeries: some View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
         return VStack(alignment: .leading) {

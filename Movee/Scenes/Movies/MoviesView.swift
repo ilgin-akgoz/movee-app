@@ -15,7 +15,11 @@ struct MoviesView: View {
             GeometryReader { proxy in
                 ScrollView(showsIndicators: false) {
                     ZStack {
-                        vibrantBlueView
+                        VStack {
+                            VibrantBlueView()
+                                .offset(y: -220)
+                            Spacer()
+                        }
                         VStack {
                             nowPlayingMovies(proxy: proxy)
                             Divider()
@@ -43,16 +47,6 @@ struct MoviesView: View {
             Task {
                 await viewModel.fetchMovies()
             }
-        }
-    }
-    private var vibrantBlueView: some View {
-        VStack {
-            Rectangle()
-                .frame(height: 250)
-                .foregroundColor(Color.vibrantBlue)
-                .ignoresSafeArea()
-                .offset(y: -220)
-            Spacer()
         }
     }
     private func nowPlayingMovies(proxy: GeometryProxy) -> some View {

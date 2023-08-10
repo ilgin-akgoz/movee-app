@@ -9,14 +9,15 @@
 import Foundation
 
 enum SearchEndpoint: TargetEndpointProtocol {
-    case search
+    case search(query: String)
     private struct Constants {
-        static let search = "search/multi"
+        static let search = "search/multi%@&query=%@"
     }
     var path: String {
         switch self {
-        case .search:
-            return BaseEndpoint.base.path + Constants.search + BaseEndpoint.apiKey.path
+        case .search(let query):
+            let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            return BaseEndpoint.base.path + String(format: Constants.search, BaseEndpoint.apiKey.path, encodedQuery)
         }
     }
 }

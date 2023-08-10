@@ -19,11 +19,8 @@ final class SearchService: SearchServiceProtocol, BaseServiceProtocol {
         self.networkLoader = networkLoader
     }
     func getSearchResults(for query: String) async throws -> SearchResponseModel {
-        let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let searchQuery = "&query=\(encodedQuery)"
         return try await request(with: RequestObject(
-            url: build(endpoint: .search),
-            searchQuery: searchQuery
+            url: build(endpoint: .search(query: query))
             ),
             responseModel: SearchResponseModel.self)
     }

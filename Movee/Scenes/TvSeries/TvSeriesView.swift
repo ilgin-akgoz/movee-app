@@ -12,29 +12,38 @@ struct TvSeriesView: View {
     @StateObject private var viewModel = TvSeriesViewModel()
     var body: some View {
         NavigationStack {
-            ScrollView(showsIndicators: false) {
-                ZStack {
-                    vibrantBlueView
-                    VStack {
-                        nowPlayingTvSeries
-
-                        topRatedTvSeries
-                    }
-                    .offset(y: -129)
-                }
-                .padding(.top, 68)
-            }
-            .navigationTitle("series.navigationTitle")
-            .background(Color.whiteTwo)
-            .overlay {
-                if viewModel.isLoading {
+            GeometryReader { proxy in
+                ScrollView(showsIndicators: false) {
                     ZStack {
-                        Color.whiteTwo
-                        ProgressView()
+                        VStack {
+                            VibrantBlueView()
+                                .offset(y: -220)
+                            Spacer()
+                        }
+                        VStack {
+                            nowPlayingTvSeries(proxy: proxy)
+                            Divider()
+                                .frame(width: proxy.size.width * 0.8)
+                            topRatedTvSeries
+                                .frame(width: proxy.size.width * 0.8)
+                        }
+                        .offset(y: -129)
+                    }
+                    .padding(.top, 68)
+                }
+                .navigationTitle("series.navigationTitle")
+                .background(Color.whiteTwo)
+                .overlay {
+                    if viewModel.isLoading {
+                        ZStack {
+                            Color.whiteTwo
+                            ProgressView()
+                        }
                     }
                 }
             }
-        }.onAppear {
+        }
+        .onAppear {
             Task {
                 await viewModel.fetchSeries()
             }
@@ -43,31 +52,19 @@ struct TvSeriesView: View {
 }
 
 extension TvSeriesView {
-    private var vibrantBlueView: some View {
-        VStack {
-            Rectangle()
-                .frame(width: 400, height: 250)
-                .foregroundColor(Color.vibrantBlue)
-                .ignoresSafeArea()
-                .offset(y: -220)
-            Spacer()
-        }
-    }
-
-    private var nowPlayingTvSeries: some View {
+    private func nowPlayingTvSeries(proxy: GeometryProxy) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(viewModel.nowPlayingSeries, id: \.self) { tvSeries in
                     NavigationLink {
                         TvSeriesDetailView(viewModel: .init(seriesID: tvSeries.id))
                     } label: {
-                        MediaCardView(media: tvSeries)
+                        MediaCardView(media: tvSeries, proxy: proxy)
                     }
                 }
             }
         }
     }
-
     private var topRatedTvSeries: some View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
         return VStack(alignment: .leading) {
@@ -83,7 +80,6 @@ extension TvSeriesView {
                 }
             }
         }
-        .padding(.horizontal, 24)
     }
 }
 

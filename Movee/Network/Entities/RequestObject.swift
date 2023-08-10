@@ -19,7 +19,8 @@ struct RequestObject {
          language: String = LocaleEndpoint.deviceLanguage.path,
          method: HTTPMethod = .get,
          data: Encodable? = nil,
-         headers: [String: String] = [:]) {
+         headers: [String: String] = [:]
+         ) {
         self.url = url + language
         self.language = language
         self.method = method

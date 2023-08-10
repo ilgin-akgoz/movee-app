@@ -33,13 +33,7 @@ struct SearchView: View {
             }
         }
         .onChange(of: viewModel.searchQuery) { newQuery in
-            if newQuery.count >= 3 {
-                Task {
-                    await viewModel.fetchResults()
-                }
-            } else {
-                viewModel.searchResults = []
-            }
+            viewModel.loadResults(for: newQuery)
         }
     }
     private func searchResultsView(proxy: GeometryProxy) -> some View {

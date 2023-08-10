@@ -59,8 +59,17 @@ class SearchViewModel: ObservableObject {
             print("\(error)")
         }
     }
-    func fetchSearchResults() async throws -> [SearchResultsResponseModel] {
+    private func fetchSearchResults() async throws -> [SearchResultsResponseModel] {
         let response = try await searchService.getSearchResults(for: searchQuery)
         return response.results
+    }
+    func loadResults(for newQuery: String) {
+        if newQuery.count >= 3 {
+            Task {
+                await fetchResults()
+            }
+        } else {
+            searchResults = []
+        }
     }
 }

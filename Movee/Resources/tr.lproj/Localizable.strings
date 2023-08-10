@@ -27,3 +27,10 @@
 "person.detail.in" = "-";
 "person.detail.seeLess" = "Daha az gör";
 "person.detail.seeFullBio" = "Tüm biyografiyi gör";
+"search.navigationTitle" = "Ara";
+"search.bar.placeholder" = "Film veya Dizi";
+"search.bar.cancel" = "Vazgeç";
+"search.noSearchResult" = "arama sonucu bulunamadı";
+"Movie" = "Film";
+"TV Series" = "Dizi";
+"Actor" = "Oyuncu";

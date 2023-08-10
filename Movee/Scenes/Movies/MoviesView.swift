@@ -12,26 +12,29 @@ struct MoviesView: View {
     @StateObject private var viewModel = MoviesViewModel()
     var body: some View {
         NavigationStack {
-            ScrollView(showsIndicators: false) {
-                ZStack {
-                    vibrantBlueView
-                    VStack {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            nowPlayingMoviesView
-                        }
-                        popularMoviesView
-                    }
-                    .offset(y: -129)
-                }
-                .navigationTitle("movies.navigationTitle")
-                .padding(.top, 68)
-                .background(Color.whiteTwo)
-            }
-            .overlay {
-                if viewModel.isLoading {
+            GeometryReader { proxy in
+                ScrollView(showsIndicators: false) {
                     ZStack {
-                        Color.whiteTwo
-                        ProgressView()
+                        vibrantBlueView
+                        VStack {
+                            nowPlayingMovies(proxy: proxy)
+                            Divider()
+                                .frame(width: proxy.size.width * 0.8)
+                            popularMoviesView
+                                .frame(width: proxy.size.width * 0.8)
+                        }
+                        .offset(y: -129)
+                    }
+                    .navigationTitle("movies.navigationTitle")
+                    .padding(.top, 68)
+                    .background(Color.whiteTwo)
+                }
+                .overlay {
+                    if viewModel.isLoading {
+                        ZStack {
+                            Color.whiteTwo
+                            ProgressView()
+                        }
                     }
                 }
             }
@@ -52,11 +55,15 @@ struct MoviesView: View {
             Spacer()
         }
     }
-    private var nowPlayingMoviesView: some View {
-        HStack {
-            ForEach(viewModel.nowPlayingMovies, id: \.id) { movie in
-                NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movieID: movie.id))) {
-                    MovieCardView(movie: movie)
+    private func nowPlayingMovies(proxy: GeometryProxy) -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(viewModel.nowPlayingMovies, id: \.id) { movie in
+                    NavigationLink(destination: MovieDetailView(
+                        viewModel: MovieDetailViewModel(movieID: movie.id))
+                    ) {
+                        MovieCardView(movie: movie, proxy: proxy)
+                    }
                 }
             }
         }
@@ -65,11 +72,9 @@ struct MoviesView: View {
         VStack(alignment: .leading) {
             Text("movies.popular.title")
                 .font(.textStyle7)
-                .padding(.leading, 24)
             ForEach(viewModel.popularMovies, id: \.id) { movie in
                 NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movieID: movie.id))) {
                     PopularMovieCardView(movie: movie)
-                        .padding(.horizontal, 24)
                 }
             }
         }

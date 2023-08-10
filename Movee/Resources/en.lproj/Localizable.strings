@@ -27,3 +27,10 @@
 "person.detail.in" = "in";
 "person.detail.seeLess" = "See less";
 "person.detail.seeFullBio" = "See full bio";
+"search.navigationTitle" = "Search";
+"search.bar.placeholder" = "Movies or Series";
+"search.bar.cancel" = "Cancel";
+"search.noSearchResult" = "your search didn't have any results";
+"Movie" = "Movie";
+"TV Series" = "TV Series";
+"Actor" = "Actor";

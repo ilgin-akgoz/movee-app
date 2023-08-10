@@ -28,6 +28,14 @@ struct MainView: View {
                         Image("iconTabbarTvSeries")
                     }
                 }.tag(MainTabs.tvSeries)
+            SearchView()
+                .tabItem {
+                    if selectedTab == .search {
+                        Image("searchTabSelectedIcon")
+                    } else {
+                        Image("searchTabIcon")
+                    }
+                }.tag(MainTabs.search)
         }
     }
 }
@@ -35,6 +43,7 @@ struct MainView: View {
 enum MainTabs {
     case movies
     case tvSeries
+    case search
 }
 
 struct MainView_Previews: PreviewProvider {

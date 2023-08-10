@@ -13,7 +13,7 @@ struct PopularMovieCardView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Rectangle()
-                .frame(width: 327, height: 100)
+                .frame(height: 100)
                 .foregroundColor(.white)
                 .cornerRadius(8)
             HStack {

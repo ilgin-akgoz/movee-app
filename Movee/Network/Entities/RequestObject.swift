@@ -14,17 +14,21 @@ struct RequestObject {
     let method: HTTPMethod
     var data: Encodable?
     var headers: [String: String]?
+    var searchQuery: String
 
     init(url: String,
          language: String = LocaleEndpoint.deviceLanguage.path,
          method: HTTPMethod = .get,
          data: Encodable? = nil,
-         headers: [String: String] = [:]) {
-        self.url = url + language
+         headers: [String: String] = [:],
+         searchQuery: String = ""
+         ) {
+        self.url = url + language + searchQuery
         self.language = language
         self.method = method
         self.data = data
         self.headers = headers
+        self.searchQuery = searchQuery
     }
 }
 
